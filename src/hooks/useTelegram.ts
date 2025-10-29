@@ -47,9 +47,12 @@ export const useTelegram = () => {
         setTheme(tg.themeParams)
       }
 
-      // Настраиваем цвета под тему DexSafe
-      tg.setHeaderColor('#12141A')
-      tg.setBackgroundColor('#12141A')
+      // Настраиваем цвета под тему DexSafe (с проверкой версии)
+      const minVersionForColorSupport = '6.1' // Примерная версия, где появилась поддержка
+      if (tg.version && tg.version >= minVersionForColorSupport) {
+        tg.setHeaderColor('#12141A')
+        tg.setBackgroundColor('#12141A')
+      }
       setHeaderColor('#12141A')
       setBackgroundColor('#12141A')
 
@@ -64,17 +67,20 @@ export const useTelegram = () => {
   const updateThemeColors = (headerColor: string, backgroundColor: string) => {
     if (window.Telegram?.WebApp) {
       const tg = window.Telegram.WebApp
-      tg.setHeaderColor(headerColor)
-      tg.setBackgroundColor(backgroundColor)
+      const minVersionForColorSupport = '6.1'
+      if (tg.version && tg.version >= minVersionForColorSupport) {
+        tg.setHeaderColor(headerColor)
+        tg.setBackgroundColor(backgroundColor)
+      }
     }
   }
 
   // Функция для скрытия клавиатуры
   const hideKeyboard = () => {
     window.Telegram?.WebApp?.HapticFeedback?.impactOccurred('light')
-    // Note: hideKeyboard is not a standard method in Telegram WebApp API
-    // Using blur on active element as an alternative
-    if (document.activeElement instanceof HTMLElement) {
+    if (window.Telegram?.WebApp?.hideKeyboard) {
+      window.Telegram.WebApp.hideKeyboard()
+    } else if (document.activeElement instanceof HTMLElement) {
       document.activeElement.blur();
     }
   }

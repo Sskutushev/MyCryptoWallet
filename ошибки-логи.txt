@@ -1,31 +1,19 @@
-13:14:07.731 Running build in Washington, D.C., USA (East) – iad1
-13:14:07.731 Build machine configuration: 2 cores, 8 GB
-13:14:07.844 Cloning github.com/Sskutushev/MyCryptoWallet (Branch: main, Commit: 735418c)
-13:14:07.850 Previous build caches not available.
-13:14:08.095 Cloning completed: 251.000ms
-13:14:08.484 Running "vercel build"
-13:14:08.965 Vercel CLI 48.6.0
-13:14:09.574 Installing dependencies...
-13:14:12.339 npm warn deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
-13:14:12.528 npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
-13:14:13.348 npm warn deprecated source-map@0.8.0-beta.0: The work that was done in this beta branch won't be included in future versions
-13:14:13.482 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
-13:14:13.510 npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
-13:14:14.562 npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
-13:14:14.584 npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
-13:14:17.517 npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
-13:14:21.753 
-13:14:21.753 added 759 packages in 12s
-13:14:21.753 
-13:14:21.753 202 packages are looking for funding
-13:14:21.753   run `npm fund` for details
-13:14:21.899 
-13:14:21.900 > dexsafe-wallet-pro@2.0.0 build
-13:14:21.900 > tsc && vite build
-13:14:21.900 
-13:14:26.586 src/components/common/Button.tsx(2,1): error TS6133: 'motion' is declared but its value is never read.
-13:14:26.587 src/hooks/useWallet.ts(43,39): error TS2345: Argument of type '{}' is not assignable to parameter of type 'string'.
-13:14:26.587 src/hooks/useWallet.ts(48,13): error TS2322: Type '{}' is not assignable to type 'string'.
-13:14:26.587 src/lib/api/telegram.ts(47,16): error TS18048: 'window.Telegram' is possibly 'undefined'.
-13:14:26.588 src/lib/security/transactionValidator.ts(9,32): error TS6133: 'address' is declared but its value is never read.
-13:14:26.624 Error: Command "npm run build" exited with 2
+[Telegram.WebView] > postEvent web_app_set_header_color Object
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_set_bottom_bar_color Object
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_theme 
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_viewport 
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_safe_area 
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_content_safe_area  
+
+Прогрузилось:
+telegram-web-app.js:740 [Telegram.WebApp] Header color is not supported in version 6.0
+setHeaderColor @ telegram-web-app.js:740
+set @ telegram-web-app.js:2691
+WebApp.setHeaderColor @ telegram-web-app.js:2761
+(anonymous) @ index-BpUJINUP.js:28
+qi @ vendor-C0mXaQdr.js:20
+dc @ vendor-C0mXaQdr.js:20
+(anonymous) @ vendor-C0mXaQdr.js:20
+k @ vendor-C0mXaQdr.js:11
+z @ vendor-C0mXaQdr.js:11
+telegram-web-app.js:796 [Telegram.WebApp] Background color is not supported in version 6.0
