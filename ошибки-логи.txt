@@ -1,7 +1,7 @@
 Running build in Washington, D.C., USA (East) – iad1
 Build machine configuration: 2 cores, 8 GB
-Cloning github.com/Sskutushev/MyCryptoWallet (Branch: main, Commit: 590bea6)
-Cloning completed: 235.000ms
+Cloning github.com/Sskutushev/MyCryptoWallet (Branch: main, Commit: 5902f4a)
+Cloning completed: 316.000ms
 Restored build cache from previous deployment (EVW1dp7xPEnYkFYPqzUv1xP3fd8m)
 Running "vercel build"
 Vercel CLI 48.6.0
@@ -11,9 +11,6 @@ up to date in 1s
   run `npm fund` for details
 > dexsafe-wallet-pro@2.0.0 build
 > tsc && vite build
-src/hooks/useTelegram.ts(93,33): error TS6133: 'key' is declared but its value is never read.
-src/hooks/useTelegram.ts(93,46): error TS6133: 'value' is declared but its value is never read.
-src/hooks/useTelegram.ts(98,33): error TS6133: 'key' is declared but its value is never read.
 src/pages/Settings.tsx(83,22): error TS6133: 'val' is declared but its value is never read.
 src/pages/Settings.tsx(89,22): error TS6133: 'val' is declared but its value is never read.
 Error: Command "npm run build" exited with 2

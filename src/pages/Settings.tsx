@@ -60,14 +60,14 @@ export const Settings = () => {
           value: currency,
           type: 'select',
           options: ['USD', 'EUR', 'RUB'] as const,
-          onChange: (val: string) => setCurrency(val as 'USD' | 'EUR' | 'RUB')
+          onChange: (_val: string) => setCurrency(_val as 'USD' | 'EUR' | 'RUB')
         },
         { 
           label: 'Язык', 
           value: language,
           type: 'select',
           options: ['en', 'ru'] as const,
-          onChange: (val: string) => setLanguage(val as 'en' | 'ru')
+          onChange: (_val: string) => setLanguage(_val as 'en' | 'ru')
         },
         { label: 'Тема оформления', path: '/settings/theme' },
       ]
@@ -80,13 +80,13 @@ export const Settings = () => {
           label: 'Биометрия',
           type: 'toggle',
           value: biometricEnabled,
-          onChange: (val: boolean) => toggleBiometric()
+          onChange: (_val: boolean) => toggleBiometric()
         },
         {
           label: 'Уведомления',
           type: 'toggle',
           value: notificationsEnabled,
-          onChange: (val: boolean) => toggleNotifications()
+          onChange: (_val: boolean) => toggleNotifications()
         },
       ]
     },
