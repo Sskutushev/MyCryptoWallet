@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useEffect, Suspense, lazy } from 'react'
-import { useTelegram } from './hooks/useTelegram'
 import { useWallet } from './hooks/useWallet'
 import './i18n/config'
 import { ErrorBoundary } from './components/common/ErrorBoundary'

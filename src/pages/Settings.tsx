@@ -60,14 +60,14 @@ export const Settings = () => {
           value: currency,
           type: 'select',
           options: ['USD', 'EUR', 'RUB'] as const,
-          onChange: (val: string | boolean) => typeof val === 'string' && setCurrency(val as 'USD' | 'EUR' | 'RUB')
+          onChange: (val: string) => setCurrency(val as 'USD' | 'EUR' | 'RUB')
         },
         { 
           label: 'Язык', 
           value: language,
           type: 'select',
           options: ['en', 'ru'] as const,
-          onChange: (val: string | boolean) => typeof val === 'string' && setLanguage(val as 'en' | 'ru')
+          onChange: (val: string) => setLanguage(val as 'en' | 'ru')
         },
         { label: 'Тема оформления', path: '/settings/theme' },
       ]
@@ -80,13 +80,13 @@ export const Settings = () => {
           label: 'Биометрия',
           type: 'toggle',
           value: biometricEnabled,
-          onChange: (val: string | boolean) => typeof val === 'boolean' && toggleBiometric()
+          onChange: (val: boolean) => toggleBiometric()
         },
         {
           label: 'Уведомления',
           type: 'toggle',
           value: notificationsEnabled,
-          onChange: (val: string | boolean) => typeof val === 'boolean' && toggleNotifications()
+          onChange: (val: boolean) => toggleNotifications()
         },
       ]
     },
@@ -136,7 +136,7 @@ export const Settings = () => {
                         <span className="text-c-text-primary">{item.label}</span>
                         <Toggle
                           enabled={item.value as boolean}
-                          onChange={(enabled) => item.onChange?.(enabled)}
+                          onChange={item.onChange as (enabled: boolean) => void}
                         />
                       </div>
                     ) : item.type === 'select' && item.options ? (
@@ -144,7 +144,7 @@ export const Settings = () => {
                         <span className="text-c-text-primary">{item.label}</span>
                         <select
                           value={item.value as string}
-                          onChange={(e) => item.onChange?.(e.target.value)}
+                          onChange={(e) => item.onChange?.(e.target.value as string)}
                           className="px-3 py-1 bg-c-bg-tertiary border border-c-border rounded text-c-text-primary"
                         >
                           {item.options.map((opt) => (
