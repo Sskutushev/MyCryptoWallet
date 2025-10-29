@@ -6,6 +6,7 @@ interface SecurityCheck {
 
 class TransactionValidator {
   // Проверка адреса на фишинг
+  // @ts-ignore
   async checkAddressReputation(address: string): Promise<SecurityCheck> {
     // TODO: Интеграция с ChainAbuse API или подобными сервисами
     

@@ -12,12 +12,12 @@ class TelegramService {
 
   // Проверяет, запущено ли приложение в Telegram
   isRunningInTelegram(): boolean {
-    return Boolean(window.Telegram?.WebApp)
+    return Boolean(window.Telegram && window.Telegram.WebApp)
   }
 
   // Возвращает информацию о версии Telegram WebApp
   getWebAppVersion(): string | null {
-    if (window.Telegram?.WebApp) {
+    if (window.Telegram && window.Telegram.WebApp) {
       return (window.Telegram.WebApp as any).version || null
     }
     return null
@@ -34,7 +34,7 @@ class TelegramService {
 
   // Отправляет события аналитики в Telegram
   trackEvent(eventName: string, eventData?: Record<string, any>) {
-    if (window.Telegram?.WebApp) {
+    if (window.Telegram && window.Telegram.WebApp) {
       // В реальном приложении тут будет вызов Telegram.WebApp.Analytics
       console.log('Tracking event:', eventName, eventData)
     }
@@ -42,7 +42,7 @@ class TelegramService {
 
   // Работа с буфером обмена (Telegram безопасный способ)
   async copyToClipboard(text: string): Promise<boolean> {
-    if (this.isRunningInTelegram() && (window.Telegram?.WebApp as any)?.clipboard) {
+    if (this.isRunningInTelegram() && window.Telegram && (window.Telegram.WebApp as any)?.clipboard) {
       try {
         await (window.Telegram.WebApp as any).clipboard.writeText(text)
         return true
@@ -64,14 +64,14 @@ class TelegramService {
 
   // Отправка данных в Telegram
   sendData(data: string) {
-    if (window.Telegram?.WebApp && typeof (window.Telegram.WebApp as any).sendData === 'function') {
+    if (window.Telegram && window.Telegram.WebApp && typeof (window.Telegram.WebApp as any).sendData === 'function') {
       (window.Telegram.WebApp as any).sendData(data)
     }
   }
 
   // Получение параметров запуска
   getStartParam(): string | null {
-    if (window.Telegram?.WebApp) {
+    if (window.Telegram && window.Telegram.WebApp) {
       return window.Telegram.WebApp.initDataUnsafe?.start_param || null
     }
     return null
@@ -79,7 +79,7 @@ class TelegramService {
 
   // Проверка, является ли пользователь администратором чата
   isAdmin(): boolean {
-    if (window.Telegram?.WebApp) {
+    if (window.Telegram && window.Telegram.WebApp) {
       return window.Telegram.WebApp.initDataUnsafe?.chat?.type === 'supergroup' || 
              window.Telegram.WebApp.initDataUnsafe?.chat?.type === 'group'
     }

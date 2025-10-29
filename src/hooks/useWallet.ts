@@ -38,7 +38,7 @@ export const useWallet = create<WalletState>((set, get) => ({
 
   loadWallet: () => {
     const encryptedWallet = secureStorage.getItem('encryptedWallet')
-    if (encryptedWallet) {
+    if (typeof encryptedWallet === 'string') {
       try {
         const walletData = JSON.parse(encryptedWallet)
         if (typeof walletData === 'object' && walletData !== null && 'address' in walletData && typeof walletData.address === 'string') {

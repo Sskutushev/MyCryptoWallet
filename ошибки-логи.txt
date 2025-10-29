@@ -1,52 +1,31 @@
-Running build in Washington, D.C., USA (East) – iad1
-Build machine configuration: 2 cores, 8 GB
-Cloning github.com/Sskutushev/MyCryptoWallet (Branch: main, Commit: a3765b3)
-Previous build caches not available.
-Cloning completed: 238.000ms
-Running "vercel build"
-Vercel CLI 48.6.0
-Installing dependencies...
-npm warn deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
-npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
-npm warn deprecated source-map@0.8.0-beta.0: The work that was done in this beta branch won't be included in future versions
-npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
-npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
-npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
-npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
-npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
-added 759 packages in 12s
-202 packages are looking for funding
-  run `npm fund` for details
-> dexsafe-wallet-pro@2.0.0 build
-> tsc && vite build
-src/components/balance/TokenList.tsx(1,1): error TS6133: 'useState' is declared but its value is never read.
-src/components/common/Button.tsx(38,6): error TS2322: Type '{ children: (ReactNode | Element)[]; onAnimationStart?: any; form?: string | undefined; formAction?: string | undefined; formEncType?: string | undefined; formMethod?: string | undefined; ... 269 more ...; disabled: boolean; }' is not assignable to type 'MotionProps'.
-  Types of property 'onDragStart' are incompatible.
-    Type 'DragEventHandler<HTMLButtonElement> | undefined' is not assignable to type '((event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void) | undefined'.
-      Type 'DragEventHandler<HTMLButtonElement>' is not assignable to type '(event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void'.
-        Types of parameters 'event' and 'event' are incompatible.
-          Type 'MouseEvent | TouchEvent | PointerEvent' is not assignable to type 'DragEvent<HTMLButtonElement>'.
-            Type 'MouseEvent' is missing the following properties from type 'DragEvent<HTMLButtonElement>': dataTransfer, nativeEvent, isDefaultPrevented, isPropagationStopped, persist
-src/components/common/tests/Button.test.tsx(3,24): error TS2307: Cannot find module '@/components/common/Button' or its corresponding type declarations.
-src/components/common/tests/Button.test.tsx(8,42): error TS2339: Property 'toBeInTheDocument' does not exist on type 'Assertion<HTMLElement>'.
-src/components/common/tests/Button.test.tsx(21,42): error TS2339: Property 'toBeDisabled' does not exist on type 'Assertion<HTMLElement>'.
-src/components/common/tests/Button.test.tsx(26,40): error TS2339: Property 'toBeDisabled' does not exist on type 'Assertion<HTMLElement>'.
-src/hooks/useTelegram.ts(75,37): error TS2339: Property 'hideKeyboard' does not exist on type '{ initDataUnsafe?: any; themeParams?: any; ready: () => void; expand: () => void; setHeaderColor: (color: string) => void; setBackgroundColor: (color: string) => void; HapticFeedback?: { impactOccurred: (style: "light" | ... 1 more ... | "heavy") => void; notificationOccurred: (type: "success" | ... 1 more ... | "er...'.
-src/hooks/useWallet.test.ts(31,76): error TS6133: 'encryptedJson' is declared but its value is never read.
-src/hooks/useWallet.test.ts(122,12): error TS2352: Conversion of type 'undefined' to type 'string' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
-src/hooks/useWallet.test.ts(122,32): error TS2339: Property 'startsWith' does not exist on type 'Assertion<string>'.
-src/hooks/useWallet.ts(43,39): error TS2345: Argument of type '{}' is not assignable to parameter of type 'string'.
-src/hooks/useWallet.ts(48,13): error TS2322: Type '{}' is not assignable to type 'string'.
-src/lib/api/telegram.ts(21,37): error TS2339: Property 'version' does not exist on type '{ initDataUnsafe?: any; themeParams?: any; ready: () => void; expand: () => void; setHeaderColor: (color: string) => void; setBackgroundColor: (color: string) => void; HapticFeedback?: { impactOccurred: (style: "light" | ... 1 more ... | "heavy") => void; notificationOccurred: (type: "success" | ... 1 more ... | "er...'.
-src/lib/api/telegram.ts(68,30): error TS2339: Property 'sendData' does not exist on type '{ initDataUnsafe?: any; themeParams?: any; ready: () => void; expand: () => void; setHeaderColor: (color: string) => void; setBackgroundColor: (color: string) => void; HapticFeedback?: { impactOccurred: (style: "light" | ... 1 more ... | "heavy") => void; notificationOccurred: (type: "success" | ... 1 more ... | "er...'.
-src/lib/security/transactionValidator.ts(9,32): error TS6133: 'address' is declared but its value is never read.
-src/pages/Settings.tsx(62,11): error TS2322: Type '(val: string) => void' is not assignable to type '(val: string | boolean) => void'.
-  Types of parameters 'val' and 'val' are incompatible.
-      Type 'string | boolean' is not assignable to type 'string'.
-      Type 'boolean' is not assignable to type 'string'.
-src/pages/Settings.tsx(69,11): error TS2322: Type '(val: string) => void' is not assignable to type '(val: string | boolean) => void'.
-  Types of parameters 'val' and 'val' are incompatible.
-    Type 'string | boolean' is not assignable to type 'string'.
-      Type 'boolean' is not assignable to type 'string'.
-src/pages/Settings.tsx(94,13): error TS2304: Cannot find name 'HelpCircle'.
-Error: Command "npm run build" exited with 2
+13:14:07.731 Running build in Washington, D.C., USA (East) – iad1
+13:14:07.731 Build machine configuration: 2 cores, 8 GB
+13:14:07.844 Cloning github.com/Sskutushev/MyCryptoWallet (Branch: main, Commit: 735418c)
+13:14:07.850 Previous build caches not available.
+13:14:08.095 Cloning completed: 251.000ms
+13:14:08.484 Running "vercel build"
+13:14:08.965 Vercel CLI 48.6.0
+13:14:09.574 Installing dependencies...
+13:14:12.339 npm warn deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
+13:14:12.528 npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+13:14:13.348 npm warn deprecated source-map@0.8.0-beta.0: The work that was done in this beta branch won't be included in future versions
+13:14:13.482 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+13:14:13.510 npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+13:14:14.562 npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+13:14:14.584 npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+13:14:17.517 npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+13:14:21.753 
+13:14:21.753 added 759 packages in 12s
+13:14:21.753 
+13:14:21.753 202 packages are looking for funding
+13:14:21.753   run `npm fund` for details
+13:14:21.899 
+13:14:21.900 > dexsafe-wallet-pro@2.0.0 build
+13:14:21.900 > tsc && vite build
+13:14:21.900 
+13:14:26.586 src/components/common/Button.tsx(2,1): error TS6133: 'motion' is declared but its value is never read.
+13:14:26.587 src/hooks/useWallet.ts(43,39): error TS2345: Argument of type '{}' is not assignable to parameter of type 'string'.
+13:14:26.587 src/hooks/useWallet.ts(48,13): error TS2322: Type '{}' is not assignable to type 'string'.
+13:14:26.587 src/lib/api/telegram.ts(47,16): error TS18048: 'window.Telegram' is possibly 'undefined'.
+13:14:26.588 src/lib/security/transactionValidator.ts(9,32): error TS6133: 'address' is declared but its value is never read.
+13:14:26.624 Error: Command "npm run build" exited with 2
