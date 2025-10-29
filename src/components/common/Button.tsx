@@ -8,6 +8,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   fullWidth?: boolean
   loading?: boolean
   children: ReactNode
+  onAnimationStart?: any; // Bypass framer-motion type conflict
 }
 
 export const Button = ({

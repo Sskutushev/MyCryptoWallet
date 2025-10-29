@@ -32,11 +32,11 @@ class SignerService {
   }
 
   async getBalance(): Promise<bigint> {
-    if (!this.signer) {
-      throw new Error('Signer not initialized')
+    if (!this.signer || !this.signer.provider) {
+      throw new Error('Signer or provider not initialized')
     }
 
-    return await this.signer.getBalance()
+    return await this.signer.provider.getBalance(await this.signer.getAddress())
   }
 
   async getAddress(): Promise<string> {

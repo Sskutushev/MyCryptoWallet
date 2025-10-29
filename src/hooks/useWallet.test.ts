@@ -118,7 +118,8 @@ describe('useWallet Hook', () => {
     await act(async () => {
       signedTx = await result.current.signTransaction(tx)
     })
-    expect(signedTx).to.be.a('string').and.startsWith('0x')
+    expect(signedTx).to.be.a('string')
+    expect(signedTx as string).startsWith('0x')
   })
 
   it('should throw error when signing while locked', async () => {

@@ -1,16 +1,16 @@
 Running build in Washington, D.C., USA (East) – iad1
 Build machine configuration: 2 cores, 8 GB
-Cloning github.com/Sskutushev/MyCryptoWallet (Branch: main, Commit: ab04242)
+Cloning github.com/Sskutushev/MyCryptoWallet (Branch: main, Commit: 235565e)
 Previous build caches not available.
-Cloning completed: 211.000ms
+Cloning completed: 223.000ms
 Running "vercel build"
 Vercel CLI 48.6.0
 Installing dependencies...
 npm warn deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
 npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
 npm warn deprecated source-map@0.8.0-beta.0: The work that was done in this beta branch won't be included in future versions
-npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
 npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
 npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
 npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
@@ -19,13 +19,7 @@ added 759 packages in 12s
   run `npm fund` for details
 > dexsafe-wallet-pro@2.0.0 build
 > tsc && vite build
-src/components/balance/TokenList.tsx(7,1): error TS6133: 'Token' is declared but its value is never read.
-src/components/balance/TokenList.tsx(16,10): error TS6133: 'sortBy' is declared but its value is never read.
-src/components/balance/TokenList.tsx(16,18): error TS6133: 'setSortBy' is declared but its value is never read.
-src/components/bonuses/MissionsCard.tsx(3,23): error TS6133: 'Lock' is declared but its value is never read.
-src/components/bonuses/MissionsCard.tsx(4,1): error TS6133: 'Mission' is declared but its value is never read.
-src/components/bonuses/SpinWheel.tsx(1,20): error TS6133: 'useEffect' is declared but its value is never read.
-src/components/bonuses/SpinWheel.tsx(4,1): error TS6133: 'Card' is declared but its value is never read.
+src/components/balance/TokenList.tsx(1,1): error TS6133: 'useState' is declared but its value is never read.
 src/components/common/Button.tsx(37,6): error TS2322: Type '{ children: (ReactNode | Element)[]; form?: string | undefined; formAction?: string | undefined; formEncType?: string | undefined; formMethod?: string | undefined; ... 270 more ...; disabled: boolean; }' is not assignable to type 'MotionProps'.
   Types of property 'onAnimationStart' are incompatible.
     Type 'AnimationEventHandler<HTMLButtonElement> | undefined' is not assignable to type '((definition: AnimationDefinition) => void) | undefined'.
@@ -37,66 +31,16 @@ src/components/common/tests/Button.test.tsx(3,24): error TS2307: Cannot find mod
 src/components/common/tests/Button.test.tsx(8,42): error TS2339: Property 'toBeInTheDocument' does not exist on type 'Assertion<HTMLElement>'.
 src/components/common/tests/Button.test.tsx(21,42): error TS2339: Property 'toBeDisabled' does not exist on type 'Assertion<HTMLElement>'.
 src/components/common/tests/Button.test.tsx(26,40): error TS2339: Property 'toBeDisabled' does not exist on type 'Assertion<HTMLElement>'.
-src/components/defi/CFATokenCard.tsx(2,22): error TS6133: 'ArrowUpRight' is declared but its value is never read.
-src/hooks/useTelegram.ts(32,49): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(33,25): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(65,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(66,25): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(84,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(86,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(88,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(94,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(95,14): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(102,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(103,14): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(111,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(112,14): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(117,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(118,14): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(123,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(124,14): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(131,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(132,14): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(138,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(140,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(142,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(150,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(151,14): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(157,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useTelegram.ts(158,14): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/hooks/useWallet.test.ts(31,76): error TS6133: 'json' is declared but its value is never read.
-src/hooks/useWallet.test.ts(52,12): error TS18048: 'mnemonic' is possibly 'undefined'.
+src/hooks/useTelegram.ts(75,37): error TS2339: Property 'hideKeyboard' does not exist on type '{ initDataUnsafe?: any; themeParams?: any; ready: () => void; expand: () => void; setHeaderColor: (color: string) => void; setBackgroundColor: (color: string) => void; HapticFeedback?: { impactOccurred: (style: "light" | ... 1 more ... | "heavy") => void; notificationOccurred: (type: "success" | ... 1 more ... | "er...'.
+src/hooks/useWallet.test.ts(31,76): error TS6133: 'encryptedJson' is declared but its value is never read.
 src/hooks/useWallet.test.ts(121,44): error TS2339: Property 'startsWith' does not exist on type 'Assertion<any>'.
 src/hooks/useWallet.ts(42,37): error TS2345: Argument of type '{}' is not assignable to parameter of type 'string'.
 src/hooks/useWallet.ts(46,9): error TS2322: Type '{}' is not assignable to type 'string'.
-src/hooks/useWallet.ts(57,5): error TS2322: Type 'HDNodeWallet' is not assignable to type 'Wallet'.
-  Property '#private' in type 'HDNodeWallet' refers to a different member that cannot be accessed from within type 'Wallet'.
-src/hooks/useWallet.ts(76,7): error TS2322: Type 'HDNodeWallet' is not assignable to type 'Wallet'.
-  Property '#private' in type 'HDNodeWallet' refers to a different member that cannot be accessed from within type 'Wallet'.
-src/hooks/useWallet.ts(104,7): error TS2322: Type 'Wallet | HDNodeWallet' is not assignable to type 'Wallet | null'.
-  Type 'HDNodeWallet' is not assignable to type 'Wallet'.
-    Property '#private' in type 'HDNodeWallet' refers to a different member that cannot be accessed from within type 'Wallet'.
-src/lib/analytics/tracker.ts(9,16): error TS2304: Cannot find name 'gtag'.
-src/lib/analytics/tracker.ts(10,7): error TS2304: Cannot find name 'gtag'.
-src/lib/api/telegram.ts(1,29): error TS2307: Cannot find module '../hooks/useTelegram' or its corresponding type declarations.
-src/lib/api/telegram.ts(33,27): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/lib/api/telegram.ts(38,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/lib/api/telegram.ts(39,21): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/lib/api/telegram.ts(55,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/lib/api/telegram.ts(63,46): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/lib/api/telegram.ts(65,22): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/lib/api/telegram.ts(85,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/lib/api/telegram.ts(86,14): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/lib/api/telegram.ts(92,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/lib/api/telegram.ts(93,21): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/lib/api/telegram.ts(100,16): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/lib/api/telegram.ts(101,21): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/lib/api/telegram.ts(102,21): error TS2339: Property 'Telegram' does not exist on type 'Window & typeof globalThis'.
-src/lib/api/upaEngine.ts(4,33): error TS2339: Property 'env' does not exist on type 'ImportMeta'.
-src/lib/chains/chainConfig.ts(37,57): error TS2339: Property 'env' does not exist on type 'ImportMeta'.
+src/lib/api/telegram.ts(1,23): error TS2688: Cannot find type definition file for '../types/telegram'.
+src/lib/api/telegram.ts(23,37): error TS2339: Property 'version' does not exist on type '{ initDataUnsafe?: any; themeParams?: any; ready: () => void; expand: () => void; setHeaderColor: (color: string) => void; setBackgroundColor: (color: string) => void; HapticFeedback?: { impactOccurred: (style: "light" | ... 1 more ... | "heavy") => void; notificationOccurred: (type: "success" | ... 1 more ... | "er...'.
+src/lib/api/telegram.ts(70,30): error TS2339: Property 'sendData' does not exist on type '{ initDataUnsafe?: any; themeParams?: any; ready: () => void; expand: () => void; setHeaderColor: (color: string) => void; setBackgroundColor: (color: string) => void; HapticFeedback?: { impactOccurred: (style: "light" | ... 1 more ... | "heavy") => void; notificationOccurred: (type: "success" | ... 1 more ... | "er...'.
 src/lib/security/transactionValidator.ts(9,32): error TS6133: 'address' is declared but its value is never read.
-src/lib/web3/signer.ts(2,1): error TS6133: 'walletService' is declared but its value is never read.
-src/lib/web3/signer.ts(40,30): error TS2339: Property 'getBalance' does not exist on type 'JsonRpcSigner'.
+src/lib/web3/signer.ts(39,30): error TS2339: Property 'getBalance' does not exist on type 'JsonRpcSigner'.
 src/pages/Settings.tsx(62,11): error TS2322: Type '(val: string) => void' is not assignable to type '(val: string | boolean) => void'.
   Types of parameters 'val' and 'val' are incompatible.
     Type 'string | boolean' is not assignable to type 'string'.

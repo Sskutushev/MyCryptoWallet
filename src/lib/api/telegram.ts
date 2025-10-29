@@ -1,5 +1,3 @@
-/// <reference types="../types/telegram" />
-
 // Telegram WebApp API Service
 class TelegramService {
   constructor() {

@@ -39,12 +39,19 @@ export const useWallet = create<WalletState>((set, get) => ({
   loadWallet: () => {
     const encryptedWallet = secureStorage.getItem('encryptedWallet')
     if (encryptedWallet) {
-      const walletData = JSON.parse(encryptedWallet)
-      set({
-        hasWallet: true,
-        address: walletData.address,
-        encryptedWallet,
-      })
+      try {
+        const walletData = JSON.parse(encryptedWallet)
+        if (typeof walletData === 'object' && walletData !== null && 'address' in walletData && typeof walletData.address === 'string') {
+          set({
+            hasWallet: true,
+            address: walletData.address,
+            encryptedWallet,
+          })
+        }
+      } catch (e) {
+        console.error('Failed to parse encrypted wallet data:', e)
+        secureStorage.removeItem('encryptedWallet') // Clear corrupted data
+      }
     }
   },
 
