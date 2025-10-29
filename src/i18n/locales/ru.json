@@ -1,0 +1,26 @@
+{
+  "common": {
+    "send": "Отправить",
+    "receive": "Получить",
+    "swap": "Обмен",
+    "balance": "Баланс",
+    "confirm": "Подтвердить",
+    "cancel": "Отмена"
+  },
+  "wallet": {
+    "totalBalance": "Общий баланс",
+    "availableBalance": "Доступный баланс",
+    "tokens": "Токены"
+  },
+  "defi": {
+    "lending": "DeFi Кредитование",
+    "availableCredit": "Доступный лимит",
+    "getBorrow": "Получить займ",
+    "provideLiquidity": "Разместить займ"
+  },
+  "upa": {
+    "analyzing": "Анализируем адрес...",
+    "recommendation": "Рекомендуемый маршрут",
+    "ecoScore": "Eco рейтинг"
+  }
+}

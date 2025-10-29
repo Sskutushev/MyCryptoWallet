@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root[data-theme="dark"] {
+  --c-bg-primary: #12141A;
+  --c-bg-secondary: #1A1D25;
+  --c-bg-tertiary: #2A2D35;
+  --c-text-primary: #E5E7EB;
+  --c-text-secondary: #9CA3AF;
+  --c-text-tertiary: #6B7280;
+  --c-primary: #00E0BE;
+  --c-primary-hover: #00C4A7;
+  --c-success: #10B981;
+  --c-danger: #EF4444;
+  --c-border: #2A2D35;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-color: var(--c-bg-primary);
+  color: var(--c-text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Кастомный scrollbar (как в DexSafe) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--c-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--c-border);
+  border-radius: 3px;
+}

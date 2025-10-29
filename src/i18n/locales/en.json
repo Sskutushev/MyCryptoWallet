@@ -1,0 +1,26 @@
+{
+  "common": {
+    "send": "Send",
+    "receive": "Receive",
+    "swap": "Swap",
+    "balance": "Balance",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  },
+  "wallet": {
+    "totalBalance": "Total Balance",
+    "availableBalance": "Available Balance",
+    "tokens": "Tokens"
+  },
+  "defi": {
+    "lending": "DeFi Lending",
+    "availableCredit": "Available Credit",
+    "getBorrow": "Get Loan",
+    "provideLiquidity": "Provide Liquidity"
+  },
+  "upa": {
+    "analyzing": "Analyzing address...",
+    "recommendation": "Recommended Route",
+    "ecoScore": "Eco Score"
+  }
+}
