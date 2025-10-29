@@ -21,28 +21,33 @@ interface ThemeParams {
 export const useTelegram = () => {
   console.log('useTelegram: Hook initialized')
   const [user, setUser] = useState<TelegramUser | null>(null)
-  const [theme] = useState<ThemeParams>({})
-  const [isExpanded] = useState(false)
   const [headerColor, setHeaderColor] = useState('#12141A')
   const [backgroundColor, setBackgroundColor] = useState('#12141A')
 
   // Attempt to parse Telegram-like initData from URL for user info if available
-  const urlParams = new URLSearchParams(window.location.search);
-  const initDataRaw = urlParams.get('tgWebAppInitData');
-  if (initDataRaw) {
-    try {
-      // Note: In real scenarios, initData should be validated server-side
-      const decodedInitData = Object.fromEntries(new URLSearchParams(initDataRaw));
-      // Basic parsing for user data - adjust as per actual initData structure
-      if (decodedInitData.user) {
-        const parsedUser = JSON.parse(decodedInitData.user);
-        setUser(parsedUser);
-        console.log('useTelegram: Parsed user from initData', parsedUser);
+  // This useEffect will run once on mount
+  useState(() => {
+    console.log('useTelegram: Initializing for web app')
+    const urlParams = new URLSearchParams(window.location.search);
+    const initDataRaw = urlParams.get('tgWebAppInitData');
+    if (initDataRaw) {
+      try {
+        // Note: In real scenarios, initData should be validated server-side
+        const decodedInitData = Object.fromEntries(new URLSearchParams(initDataRaw));
+        // Basic parsing for user data - adjust as per actual initData structure
+        if (decodedInitData.user) {
+          const parsedUser = JSON.parse(decodedInitData.user);
+          setUser(parsedUser);
+          console.log('useTelegram: Parsed user from initData', parsedUser);
+        }
+      } catch (e) {
+        console.error('useTelegram: Failed to parse initData from URL', e);
       }
-    } catch (e) {
-      console.error('useTelegram: Failed to parse initData from URL', e);
     }
-  }
+    // For a generic web app, colors are set via CSS or theme context directly
+    // setHeaderColor and setBackgroundColor are no longer Telegram SDK specific
+    // They now control component-level state if needed
+  }); // Empty dependency array, runs once
 
   // Function for updating theme colors (now controls local state)
   const updateThemeColors = (newHeaderColor: string, newBackgroundColor: string) => {
@@ -85,7 +90,7 @@ export const useTelegram = () => {
     window.close() // Closes current window/tab
   }
 
-  const openLink = (url: string, options?: { try_instant_view?: boolean }) => {
+  const openLink = (url: string) => {
     window.open(url, '_blank') // Opens in new tab
   }
 
@@ -109,7 +114,7 @@ export const useTelegram = () => {
     webApp: null, // No Telegram WebApp object in generic context
     theme,
     isReady: true,
-    isExpanded,
+    isExpanded: false,
     headerColor,
     backgroundColor,
     updateThemeColors,

@@ -144,7 +144,7 @@ export const Settings = () => {
                         <span className="text-c-text-primary">{item.label}</span>
                         <select
                           value={item.value as string}
-                          onChange={(e) => item.onChange?.(e.target.value as string)}
+                          onChange={(e) => (item.onChange as (val: string) => void)?.(e.target.value as string)}
                           className="px-3 py-1 bg-c-bg-tertiary border border-c-border rounded text-c-text-primary"
                         >
                           {item.options.map((opt) => (
