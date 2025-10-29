@@ -1,24 +1,20 @@
-src/lib/web3/wallet.ts(12,7): error TS2322: Type 'HDNodeWallet' is not assignable to type 'Wallet'.
-  Property '#private' in type 'HDNodeWallet' refers to a different member that cannot be accessed from within type 'Wallet'.
-src/lib/web3/wallet.ts(15,7): error TS2322: Type 'HDNodeWallet' is not assignable to type 'Wallet'.
-  Property '#private' in type 'HDNodeWallet' refers to a different member that cannot be accessed from within type 'Wallet'.
-src/lib/web3/wallet.ts(22,27): error TS2339: Property 'mnemonic' does not exist on type 'Wallet'.
-src/lib/web3/wallet.ts(82,5): error TS2322: Type 'Wallet | HDNodeWallet' is not assignable to type 'Wallet | null'.
-  Type 'HDNodeWallet' is not assignable to type 'Wallet'.
-    Property '#private' in type 'HDNodeWallet' refers to a different member that cannot be accessed from within type 'Wallet'.
-src/pages/DeFi.tsx(7,1): error TS6133: 'CFAToken' is declared but its value is never read.
-src/pages/Receive.tsx(4,1): error TS6133: 'Button' is declared but its value is never read.
-src/pages/Receive.tsx(5,10): error TS6133: 'ArrowLeft' is declared but its value is never read.
-src/pages/Receive.tsx(11,25): error TS6133: 'setSelectedToken' is declared but its value is never read.
-src/pages/Receive.tsx(12,27): error TS6133: 'setSelectedNetwork' is declared but its value is never read.
-src/pages/Send.tsx(24,25): error TS6133: 'setSelectedToken' is declared but its value is never read.
-src/pages/Send.tsx(95,24): error TS2339: Property 'wait' does not exist on type 'string'.
-src/pages/Settings.tsx(8,3): error TS6133: 'Bell' is declared but its value is never read.
-src/pages/Settings.tsx(10,3): error TS6133: 'Palette' is declared but its value is never read.
-src/pages/Settings.tsx(137,34): error TS2339: Property 'options' does not exist on type '{ label: string; value: "USD" | "EUR" | "RUB"; type: string; options: readonly ["USD", "EUR", "RUB"]; onChange: (val: string) => void; path?: undefined; } | { label: string; value: "ru" | "en"; type: string; options: readonly [...]; onChange: (val: string) => void; path?: undefined; } | { ...; }'.
-  Property 'options' does not exist on type '{ label: string; type: string; value: boolean; onChange: () => void; }'.
-src/pages/Settings.tsx(146,45): error TS2339: Property 'path' does not exist on type '{ label: string; value: "USD" | "EUR" | "RUB"; type: string; options: readonly ["USD", "EUR", "RUB"]; onChange: (val: string) => void; path?: undefined; } | { label: string; value: "ru" | "en"; type: string; options: readonly [...]; onChange: (val: string) => void; path?: undefined; } | { ...; } | { ...; }'.
-  Property 'path' does not exist on type '{ label: string; type: string; value: boolean; onChange: () => void; }'.
-src/pages/Settings.tsx(146,67): error TS2339: Property 'path' does not exist on type '{ label: string; value: "USD" | "EUR" | "RUB"; type: string; options: readonly ["USD", "EUR", "RUB"]; onChange: (val: string) => void; path?: undefined; } | { label: string; value: "ru" | "en"; type: string; options: readonly [...]; onChange: (val: string) => void; path?: undefined; } | { ...; } | { ...; }'.
-  Property 'path' does not exist on type '{ label: string; type: string; value: boolean; onChange: () => void; }'.
+Previous build caches not available.
+Cloning completed: 219.000ms
+Running "vercel build"
+Vercel CLI 48.6.0
+Installing dependencies...
+npm warn deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated source-map@0.8.0-beta.0: The work that was done in this beta branch won't be included in future versions
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+added 759 packages in 12s
+202 packages are looking for funding
+  run `npm fund` for details
+> dexsafe-wallet-pro@2.0.0 build
+> tsc && vite build
+src/pages/Receive.tsx(2,26): error TS1005: 'from' expected.
 Error: Command "npm run build" exited with 2

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { PageContainer } '../components/layout/PageContainer'
+import { PageContainer } from '../components/layout/PageContainer'
 import { Card } from '../components/common/Card'
 import { Copy, Share2, Edit3 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
