@@ -1,25 +1,19 @@
-14:42:04.801 Running build in Washington, D.C., USA (East) – iad1
-14:42:04.801 Build machine configuration: 2 cores, 8 GB
-14:42:04.946 Cloning github.com/Sskutushev/MyCryptoWallet (Branch: main, Commit: 339aaa6)
-14:42:05.218 Cloning completed: 272.000ms
-14:42:05.686 Restored build cache from previous deployment (EVW1dp7xPEnYkFYPqzUv1xP3fd8m)
-14:42:06.502 Running "vercel build"
-14:42:06.955 Vercel CLI 48.6.0
-14:42:07.550 Installing dependencies...
-14:42:08.870 
-14:42:08.871 up to date in 1s
-14:42:08.872 
-14:42:08.872 202 packages are looking for funding
-14:42:08.872   run `npm fund` for details
-14:42:09.000 
-14:42:09.001 > dexsafe-wallet-pro@2.0.0 build
-14:42:09.001 > tsc && vite build
-14:42:09.001 
-14:42:14.025 src/hooks/useTelegram.ts(12,11): error TS6196: 'ThemeParams' is declared but never used.
-14:42:14.026 src/hooks/useTelegram.ts(102,33): error TS6133: 'key' is declared but its value is never read.
-14:42:14.026 src/hooks/useTelegram.ts(102,46): error TS6133: 'value' is declared but its value is never read.
-14:42:14.026 src/hooks/useTelegram.ts(107,33): error TS6133: 'key' is declared but its value is never read.
-14:42:14.026 src/hooks/useTelegram.ts(115,5): error TS18004: No value exists in scope for the shorthand property 'theme'. Either declare one or provide an initializer.
-14:42:14.027 src/pages/Settings.tsx(83,22): error TS6133: 'val' is declared but its value is never read.
-14:42:14.027 src/pages/Settings.tsx(89,22): error TS6133: 'val' is declared but its value is never read.
-14:42:14.052 Error: Command "npm run build" exited with 2
+Running build in Washington, D.C., USA (East) – iad1
+Build machine configuration: 2 cores, 8 GB
+Cloning github.com/Sskutushev/MyCryptoWallet (Branch: main, Commit: 590bea6)
+Cloning completed: 235.000ms
+Restored build cache from previous deployment (EVW1dp7xPEnYkFYPqzUv1xP3fd8m)
+Running "vercel build"
+Vercel CLI 48.6.0
+Installing dependencies...
+up to date in 1s
+202 packages are looking for funding
+  run `npm fund` for details
+> dexsafe-wallet-pro@2.0.0 build
+> tsc && vite build
+src/hooks/useTelegram.ts(93,33): error TS6133: 'key' is declared but its value is never read.
+src/hooks/useTelegram.ts(93,46): error TS6133: 'value' is declared but its value is never read.
+src/hooks/useTelegram.ts(98,33): error TS6133: 'key' is declared but its value is never read.
+src/pages/Settings.tsx(83,22): error TS6133: 'val' is declared but its value is never read.
+src/pages/Settings.tsx(89,22): error TS6133: 'val' is declared but its value is never read.
+Error: Command "npm run build" exited with 2

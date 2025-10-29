@@ -90,12 +90,12 @@ export const useTelegram = () => {
   }
 
   // Cloud storage functionalities are Telegram-specific and cannot be replicated directly in a generic web app
-  const setCloudStorageValue = (key: string, value: string, callback?: (error?: string) => void) => {
+  const setCloudStorageValue = (_key: string, _value: string, callback?: (error?: string) => void) => {
     console.warn('CloudStorage is Telegram-specific and not available in generic web app.')
     callback?.('CloudStorage not available')
   }
 
-  const getCloudStorageValue = (key: string, callback?: (error: string | null, value: string | null) => void) => {
+  const getCloudStorageValue = (_key: string, callback?: (error: string | null, value: string | null) => void) => {
     console.warn('CloudStorage is Telegram-specific and not available in generic web app.')
     callback?.('CloudStorage not available', null)
   }
