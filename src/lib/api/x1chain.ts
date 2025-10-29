@@ -38,9 +38,8 @@ class X1ChainProvider {
     return ethers.formatUnits(balance, decimals)
   }
 
-  async sendTransaction(signedTx: string): Promise<string> {
-    const tx = await this.provider.broadcastTransaction(signedTx)
-    return tx.hash
+  async sendTransaction(signedTx: string): Promise<ethers.TransactionResponse> {
+    return await this.provider.broadcastTransaction(signedTx)
   }
 
   async getGasPrice(): Promise<string> {

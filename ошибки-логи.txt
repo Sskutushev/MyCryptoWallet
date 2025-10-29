@@ -1,7 +1,24 @@
-Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
-telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_set_header_color {color_key: 'bg_color'}
-telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_set_bottom_bar_color {color: '#ffffff'}
-telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_theme 
-telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_viewport 
-telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_safe_area 
-telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_content_safe_area 
+src/lib/web3/wallet.ts(12,7): error TS2322: Type 'HDNodeWallet' is not assignable to type 'Wallet'.
+  Property '#private' in type 'HDNodeWallet' refers to a different member that cannot be accessed from within type 'Wallet'.
+src/lib/web3/wallet.ts(15,7): error TS2322: Type 'HDNodeWallet' is not assignable to type 'Wallet'.
+  Property '#private' in type 'HDNodeWallet' refers to a different member that cannot be accessed from within type 'Wallet'.
+src/lib/web3/wallet.ts(22,27): error TS2339: Property 'mnemonic' does not exist on type 'Wallet'.
+src/lib/web3/wallet.ts(82,5): error TS2322: Type 'Wallet | HDNodeWallet' is not assignable to type 'Wallet | null'.
+  Type 'HDNodeWallet' is not assignable to type 'Wallet'.
+    Property '#private' in type 'HDNodeWallet' refers to a different member that cannot be accessed from within type 'Wallet'.
+src/pages/DeFi.tsx(7,1): error TS6133: 'CFAToken' is declared but its value is never read.
+src/pages/Receive.tsx(4,1): error TS6133: 'Button' is declared but its value is never read.
+src/pages/Receive.tsx(5,10): error TS6133: 'ArrowLeft' is declared but its value is never read.
+src/pages/Receive.tsx(11,25): error TS6133: 'setSelectedToken' is declared but its value is never read.
+src/pages/Receive.tsx(12,27): error TS6133: 'setSelectedNetwork' is declared but its value is never read.
+src/pages/Send.tsx(24,25): error TS6133: 'setSelectedToken' is declared but its value is never read.
+src/pages/Send.tsx(95,24): error TS2339: Property 'wait' does not exist on type 'string'.
+src/pages/Settings.tsx(8,3): error TS6133: 'Bell' is declared but its value is never read.
+src/pages/Settings.tsx(10,3): error TS6133: 'Palette' is declared but its value is never read.
+src/pages/Settings.tsx(137,34): error TS2339: Property 'options' does not exist on type '{ label: string; value: "USD" | "EUR" | "RUB"; type: string; options: readonly ["USD", "EUR", "RUB"]; onChange: (val: string) => void; path?: undefined; } | { label: string; value: "ru" | "en"; type: string; options: readonly [...]; onChange: (val: string) => void; path?: undefined; } | { ...; }'.
+  Property 'options' does not exist on type '{ label: string; type: string; value: boolean; onChange: () => void; }'.
+src/pages/Settings.tsx(146,45): error TS2339: Property 'path' does not exist on type '{ label: string; value: "USD" | "EUR" | "RUB"; type: string; options: readonly ["USD", "EUR", "RUB"]; onChange: (val: string) => void; path?: undefined; } | { label: string; value: "ru" | "en"; type: string; options: readonly [...]; onChange: (val: string) => void; path?: undefined; } | { ...; } | { ...; }'.
+  Property 'path' does not exist on type '{ label: string; type: string; value: boolean; onChange: () => void; }'.
+src/pages/Settings.tsx(146,67): error TS2339: Property 'path' does not exist on type '{ label: string; value: "USD" | "EUR" | "RUB"; type: string; options: readonly ["USD", "EUR", "RUB"]; onChange: (val: string) => void; path?: undefined; } | { label: string; value: "ru" | "en"; type: string; options: readonly [...]; onChange: (val: string) => void; path?: undefined; } | { ...; } | { ...; }'.
+  Property 'path' does not exist on type '{ label: string; type: string; value: boolean; onChange: () => void; }'.
+Error: Command "npm run build" exited with 2

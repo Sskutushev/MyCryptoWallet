@@ -5,15 +5,27 @@ import { Button } from '../components/common/Button'
 import { 
   User, 
   Shield, 
-  Bell, 
   Globe, 
-  Palette, 
-  HelpCircle, 
   LogOut,
   ChevronRight 
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useSettingsStore } from '../store/settingsStore'
+
+interface SettingItem {
+  label: string;
+  path?: string;
+  type?: 'toggle' | 'select';
+  value?: any;
+  options?: readonly string[];
+  onChange?: (val: string | boolean) => void;
+}
+
+interface SettingSection {
+  title: string;
+  icon: any; // LucideIcon type
+  items: SettingItem[];
+}
 
 export const Settings = () => {
   const navigate = useNavigate()
@@ -28,7 +40,7 @@ export const Settings = () => {
     toggleNotifications,
   } = useSettingsStore()
 
-  const settingSections = [
+  const settingSections: SettingSection[] = [
     {
       title: 'Аккаунт',
       icon: User,
@@ -123,7 +135,7 @@ export const Settings = () => {
                         <span className="text-c-text-primary">{item.label}</span>
                         <Toggle
                           enabled={item.value as boolean}
-                          onChange={item.onChange as any}
+                          onChange={item.onChange as (enabled: boolean) => void}
                         />
                       </div>
                     ) : item.type === 'select' ? (

@@ -21,7 +21,7 @@ export const Send = () => {
   const { currentRoute, setRoute, resetRoute } = useUPAStore()
 
   const [step, setStep] = useState<'input' | 'analyzing' | 'recommendation' | 'confirm'>('input')
-  const [selectedToken, setSelectedToken] = useState('XEC')
+  const [selectedToken] = useState('XEC')
   const [recipientAddress, setRecipientAddress] = useState('')
   const [amount, setAmount] = useState('')
   const [loading, setLoading] = useState(false)

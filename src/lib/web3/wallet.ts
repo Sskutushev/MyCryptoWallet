@@ -1,18 +1,18 @@
 import { ethers } from 'ethers'
 
 class WalletService {
-  private wallet: ethers.Wallet | null = null
+  private wallet: ethers.Wallet | ethers.HDNodeWallet | null = null
   private provider: ethers.JsonRpcProvider | null = null
 
   async createWallet(mnemonic?: string): Promise<{ address: string; mnemonic: string; privateKey: string }> {
-    let newWallet: ethers.Wallet
+    let newWallet: ethers.HDNodeWallet
 
     if (mnemonic) {
       // Создать кошелек из мнемоники
-      newWallet = ethers.Wallet.fromPhrase(mnemonic)
+      newWallet = ethers.Wallet.fromPhrase(mnemonic) as ethers.HDNodeWallet
     } else {
       // Создать новый кошелек
-      newWallet = ethers.Wallet.createRandom()
+      newWallet = ethers.Wallet.createRandom() as ethers.HDNodeWallet
     }
 
     this.wallet = newWallet

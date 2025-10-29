@@ -4,7 +4,6 @@ import { CFATokenCard } from '../components/defi/CFATokenCard'
 import { Card } from '../components/common/Card'
 import { Button } from '../components/common/Button'
 import { ArrowRight, Info } from 'lucide-react'
-import { CFAToken } from '../types'
 import { useDeFiStore } from '../store/defiStore'
 
 import { cfaTokens } from '../mock/cfa'

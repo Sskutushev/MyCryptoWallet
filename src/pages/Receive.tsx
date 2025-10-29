@@ -1,15 +1,14 @@
 import { useState } from 'react'
-import { PageContainer } from '../components/layout/PageContainer'
+import { PageContainer } '../components/layout/PageContainer'
 import { Card } from '../components/common/Card'
-import { Button } from '../components/common/Button'
-import { ArrowLeft, Copy, Share2, Edit3 } from 'lucide-react'
+import { Copy, Share2, Edit3 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import QRCode from 'qrcode.react'
 
 export const Receive = () => {
   const navigate = useNavigate()
-  const [selectedToken, setSelectedToken] = useState('BNB')
-  const [selectedNetwork, setSelectedNetwork] = useState('BSC')
+  const [selectedToken] = useState('BNB')
+  const [selectedNetwork] = useState('BSC')
   
   // TODO: Получить реальный адрес из walletStore
   const walletAddress = '0x91A2d5821b2849A7DE11052f269da5b41ce5dba4'
