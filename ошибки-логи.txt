@@ -1,26 +1,25 @@
-14:32:15.931 Running build in Washington, D.C., USA (East) – iad1
-14:32:15.932 Build machine configuration: 2 cores, 8 GB
-14:32:16.068 Cloning github.com/Sskutushev/MyCryptoWallet (Branch: main, Commit: 154c1a0)
-14:32:16.352 Cloning completed: 284.000ms
-14:32:16.735 Restored build cache from previous deployment (EVW1dp7xPEnYkFYPqzUv1xP3fd8m)
-14:32:17.572 Running "vercel build"
-14:32:18.016 Vercel CLI 48.6.0
-14:32:18.592 Installing dependencies...
-14:32:19.933 
-14:32:19.934 up to date in 1s
-14:32:19.934 
-14:32:19.935 202 packages are looking for funding
-14:32:19.935   run `npm fund` for details
-14:32:20.064 
-14:32:20.065 > dexsafe-wallet-pro@2.0.0 build
-14:32:20.065 > tsc && vite build
-14:32:20.065 
-14:32:25.185 src/hooks/useTelegram.ts(88,34): error TS6133: 'options' is declared but its value is never read.
-14:32:25.186 src/hooks/useTelegram.ts(97,33): error TS6133: 'key' is declared but its value is never read.
-14:32:25.186 src/hooks/useTelegram.ts(97,46): error TS6133: 'value' is declared but its value is never read.
-14:32:25.187 src/hooks/useTelegram.ts(102,33): error TS6133: 'key' is declared but its value is never read.
-14:32:25.187 src/main.tsx(1,1): error TS6133: 'StrictMode' is declared but its value is never read.
-14:32:25.187 src/pages/Settings.tsx(83,22): error TS6133: 'val' is declared but its value is never read.
-14:32:25.188 src/pages/Settings.tsx(89,22): error TS6133: 'val' is declared but its value is never read.
-14:32:25.188 src/pages/Settings.tsx(147,60): error TS2345: Argument of type 'string' is not assignable to parameter of type 'never'.
-14:32:25.215 Error: Command "npm run build" exited with 2
+14:42:04.801 Running build in Washington, D.C., USA (East) – iad1
+14:42:04.801 Build machine configuration: 2 cores, 8 GB
+14:42:04.946 Cloning github.com/Sskutushev/MyCryptoWallet (Branch: main, Commit: 339aaa6)
+14:42:05.218 Cloning completed: 272.000ms
+14:42:05.686 Restored build cache from previous deployment (EVW1dp7xPEnYkFYPqzUv1xP3fd8m)
+14:42:06.502 Running "vercel build"
+14:42:06.955 Vercel CLI 48.6.0
+14:42:07.550 Installing dependencies...
+14:42:08.870 
+14:42:08.871 up to date in 1s
+14:42:08.872 
+14:42:08.872 202 packages are looking for funding
+14:42:08.872   run `npm fund` for details
+14:42:09.000 
+14:42:09.001 > dexsafe-wallet-pro@2.0.0 build
+14:42:09.001 > tsc && vite build
+14:42:09.001 
+14:42:14.025 src/hooks/useTelegram.ts(12,11): error TS6196: 'ThemeParams' is declared but never used.
+14:42:14.026 src/hooks/useTelegram.ts(102,33): error TS6133: 'key' is declared but its value is never read.
+14:42:14.026 src/hooks/useTelegram.ts(102,46): error TS6133: 'value' is declared but its value is never read.
+14:42:14.026 src/hooks/useTelegram.ts(107,33): error TS6133: 'key' is declared but its value is never read.
+14:42:14.026 src/hooks/useTelegram.ts(115,5): error TS18004: No value exists in scope for the shorthand property 'theme'. Either declare one or provide an initializer.
+14:42:14.027 src/pages/Settings.tsx(83,22): error TS6133: 'val' is declared but its value is never read.
+14:42:14.027 src/pages/Settings.tsx(89,22): error TS6133: 'val' is declared but its value is never read.
+14:42:14.052 Error: Command "npm run build" exited with 2

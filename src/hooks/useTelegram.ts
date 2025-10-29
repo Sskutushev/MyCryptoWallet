@@ -9,15 +9,6 @@ interface TelegramUser {
   photo_url?: string
 }
 
-interface ThemeParams {
-  bg_color?: string
-  text_color?: string
-  hint_color?: string
-  link_color?: string
-  button_color?: string
-  button_text_color?: string
-}
-
 export const useTelegram = () => {
   console.log('useTelegram: Hook initialized')
   const [user, setUser] = useState<TelegramUser | null>(null)
@@ -112,9 +103,7 @@ export const useTelegram = () => {
   return {
     user,
     webApp: null, // No Telegram WebApp object in generic context
-    theme,
     isReady: true,
-    isExpanded: false,
     headerColor,
     backgroundColor,
     updateThemeColors,
