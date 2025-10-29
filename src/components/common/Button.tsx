@@ -1,7 +1,8 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react'
+import { motion, MotionProps } from 'framer-motion'
 import { Loader2 } from 'lucide-react'
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof MotionProps> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   fullWidth?: boolean
@@ -18,7 +19,7 @@ export const Button = ({
   children,
   className = '',
   ...props
-}: ButtonProps) => {
+}: ButtonProps & MotionProps) => {
   const variants = {
     primary: 'bg-c-primary hover:bg-c-primary-hover text-white',
     secondary: 'bg-c-bg-secondary hover:bg-c-bg-tertiary text-c-text-primary',
@@ -33,7 +34,9 @@ export const Button = ({
   }
 
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: disabled ? 1 : 1.02 }}
+      whileTap={{ scale: disabled ? 1 : 0.98 }}
       className={`
         ${variants[variant]}
         ${sizes[size]}
@@ -48,6 +51,6 @@ export const Button = ({
     >
       {loading && <Loader2 className="w-4 h-4 animate-spin" />}
       {children}
-    </button>
+    </motion.button>
   )
 }

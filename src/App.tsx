@@ -35,17 +35,18 @@ const Loading = () => (
 )
 
 function App() {
-  const { isReady } = useTelegram()
+  console.log('App: Component rendering')
   const { hasWallet, isLocked, loadWallet } = useWallet()
 
   useEffect(() => {
+    console.log('App: useEffect triggered')
     document.documentElement.setAttribute('data-theme', 'dark')
+    console.log('App: Calling loadWallet')
     loadWallet()
+    console.log('App: loadWallet called')
   }, [loadWallet])
 
-  if (!isReady) {
-    return <Loading />
-  }
+  console.log('App: hasWallet =', hasWallet, 'isLocked =', isLocked)
 
   return (
     <ErrorBoundary>

@@ -1,6 +1,8 @@
 interface Window {
   Telegram?: { 
     WebApp?: { 
+      version?: string;
+      sendData: (data: string) => void;
       initDataUnsafe?: any;
       themeParams?: any;
       ready: () => void;

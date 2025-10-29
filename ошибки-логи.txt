@@ -1,19 +1,85 @@
-[Telegram.WebView] > postEvent web_app_set_header_color Object
-telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_set_bottom_bar_color Object
+chunk-NFC5BX5N.js?v=f136bf1e:21551 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_set_header_color {color_key: 'bg_color'}
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_set_bottom_bar_color {color: '#ffffff'}
 telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_theme 
 telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_viewport 
 telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_safe_area 
-telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_content_safe_area  
-
-Прогрузилось:
-telegram-web-app.js:740 [Telegram.WebApp] Header color is not supported in version 6.0
-setHeaderColor @ telegram-web-app.js:740
-set @ telegram-web-app.js:2691
-WebApp.setHeaderColor @ telegram-web-app.js:2761
-(anonymous) @ index-BpUJINUP.js:28
-qi @ vendor-C0mXaQdr.js:20
-dc @ vendor-C0mXaQdr.js:20
-(anonymous) @ vendor-C0mXaQdr.js:20
-k @ vendor-C0mXaQdr.js:11
-z @ vendor-C0mXaQdr.js:11
-telegram-web-app.js:796 [Telegram.WebApp] Background color is not supported in version 6.0
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_content_safe_area 
+App.tsx:38 App: Component rendering
+useTelegram.ts:22 useTelegram: Hook initialized
+App.tsx:50 App: isReady = false hasWallet = false isLocked = true
+App.tsx:53 App: Displaying Telegram WebApp loading spinner
+App.tsx:38 App: Component rendering
+useTelegram.ts:22 useTelegram: Hook initialized
+App.tsx:50 App: isReady = false hasWallet = false isLocked = true
+App.tsx:53 App: Displaying Telegram WebApp loading spinner
+useTelegram.ts:32 useTelegram: useEffect triggered
+useTelegram.ts:36 useTelegram: Telegram WebApp detected
+useTelegram.ts:39 useTelegram: Calling tg.ready()
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_ready 
+useTelegram.ts:41 useTelegram: tg.ready() called
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_expand 
+useTelegram.ts:67 useTelegram: Setting isReady(true)
+useTelegram.ts:69 useTelegram: isReady(true) set
+App.tsx:43 App: useEffect triggered
+App.tsx:45 App: Calling loadWallet
+useWallet.ts:40 useWallet: loadWallet called
+useWallet.ts:42 useWallet: encryptedWallet from secureStorage = null
+useWallet.ts:59 useWallet: loadWallet finished
+App.tsx:47 App: loadWallet called
+useTelegram.ts:32 useTelegram: useEffect triggered
+useTelegram.ts:36 useTelegram: Telegram WebApp detected
+useTelegram.ts:39 useTelegram: Calling tg.ready()
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_ready 
+useTelegram.ts:41 useTelegram: tg.ready() called
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_expand 
+useTelegram.ts:67 useTelegram: Setting isReady(true)
+useTelegram.ts:69 useTelegram: isReady(true) set
+App.tsx:43 App: useEffect triggered
+App.tsx:45 App: Calling loadWallet
+useWallet.ts:40 useWallet: loadWallet called
+useWallet.ts:42 useWallet: encryptedWallet from secureStorage = null
+useWallet.ts:59 useWallet: loadWallet finished
+App.tsx:47 App: loadWallet called
+App.tsx:38 App: Component rendering
+useTelegram.ts:22 useTelegram: Hook initialized
+App.tsx:50 App: isReady = true hasWallet = false isLocked = true
+App.tsx:57 App: Telegram WebApp is ready, rendering main app
+App.tsx:38 App: Component rendering
+useTelegram.ts:22 useTelegram: Hook initialized
+App.tsx:50 App: isReady = true hasWallet = false isLocked = true
+App.tsx:57 App: Telegram WebApp is ready, rendering main app
+react-router-dom.js?v=f136bf1e:4393 ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+warnOnce @ react-router-dom.js?v=f136bf1e:4393
+logDeprecation @ react-router-dom.js?v=f136bf1e:4396
+logV6DeprecationWarnings @ react-router-dom.js?v=f136bf1e:4399
+(anonymous) @ react-router-dom.js?v=f136bf1e:5271
+commitHookEffectListMount @ chunk-NFC5BX5N.js?v=f136bf1e:16915
+commitPassiveMountOnFiber @ chunk-NFC5BX5N.js?v=f136bf1e:18156
+commitPassiveMountEffects_complete @ chunk-NFC5BX5N.js?v=f136bf1e:18129
+commitPassiveMountEffects_begin @ chunk-NFC5BX5N.js?v=f136bf1e:18119
+commitPassiveMountEffects @ chunk-NFC5BX5N.js?v=f136bf1e:18109
+flushPassiveEffectsImpl @ chunk-NFC5BX5N.js?v=f136bf1e:19490
+flushPassiveEffects @ chunk-NFC5BX5N.js?v=f136bf1e:19447
+(anonymous) @ chunk-NFC5BX5N.js?v=f136bf1e:19328
+workLoop @ chunk-NFC5BX5N.js?v=f136bf1e:197
+flushWork @ chunk-NFC5BX5N.js?v=f136bf1e:176
+performWorkUntilDeadline @ chunk-NFC5BX5N.js?v=f136bf1e:384
+react-router-dom.js?v=f136bf1e:4393 ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+warnOnce @ react-router-dom.js?v=f136bf1e:4393
+logDeprecation @ react-router-dom.js?v=f136bf1e:4396
+logV6DeprecationWarnings @ react-router-dom.js?v=f136bf1e:4402
+(anonymous) @ react-router-dom.js?v=f136bf1e:5271
+commitHookEffectListMount @ chunk-NFC5BX5N.js?v=f136bf1e:16915
+commitPassiveMountOnFiber @ chunk-NFC5BX5N.js?v=f136bf1e:18156
+commitPassiveMountEffects_complete @ chunk-NFC5BX5N.js?v=f136bf1e:18129
+commitPassiveMountEffects_begin @ chunk-NFC5BX5N.js?v=f136bf1e:18119
+commitPassiveMountEffects @ chunk-NFC5BX5N.js?v=f136bf1e:18109
+flushPassiveEffectsImpl @ chunk-NFC5BX5N.js?v=f136bf1e:19490
+flushPassiveEffects @ chunk-NFC5BX5N.js?v=f136bf1e:19447
+(anonymous) @ chunk-NFC5BX5N.js?v=f136bf1e:19328
+workLoop @ chunk-NFC5BX5N.js?v=f136bf1e:197
+flushWork @ chunk-NFC5BX5N.js?v=f136bf1e:176
+performWorkUntilDeadline @ chunk-NFC5BX5N.js?v=f136bf1e:384
+workbox-core.dev.js:433 workbox Router is responding to: /vite.svg
+workbox-core.dev.js:433 workbox Using CacheFirst to respond to '/vite.svg'

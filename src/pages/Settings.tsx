@@ -19,7 +19,7 @@ interface SettingItem {
   type?: 'toggle' | 'select';
   value?: any;
   options?: readonly string[];
-  onChange?: (val: string | boolean) => void;
+  onChange?: ((val: string) => void) | ((val: boolean) => void);
 }
 
 interface SettingSection {

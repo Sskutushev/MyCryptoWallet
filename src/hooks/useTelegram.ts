@@ -19,147 +19,107 @@ interface ThemeParams {
 }
 
 export const useTelegram = () => {
+  console.log('useTelegram: Hook initialized')
   const [user, setUser] = useState<TelegramUser | null>(null)
-  const [webApp, setWebApp] = useState<any>(null)
+  const [webApp, setWebApp] = useState<any>(null) // Will likely be null without Telegram SDK
   const [theme, setTheme] = useState<ThemeParams>({})
-  const [isReady, setIsReady] = useState(false)
+  const [isReady, setIsReady] = useState(true) // Set to true by default for web app
   const [isExpanded, setIsExpanded] = useState(false)
   const [headerColor, setHeaderColor] = useState('#12141A')
   const [backgroundColor, setBackgroundColor] = useState('#12141A')
 
   useEffect(() => {
-    // Проверяем доступность Telegram WebApp
-    if (window.Telegram?.WebApp) {
-      const tg = window.Telegram.WebApp
-
-      // Инициализация
-      tg.ready()
-      tg.expand()
-      setIsExpanded(true)
-
-      // Получаем данные пользователя
-      if (tg.initDataUnsafe?.user) {
-        setUser(tg.initDataUnsafe.user as TelegramUser)
+    console.log('useTelegram: useEffect triggered for web app')
+    // In a generic web context, we assume the app is ready immediately
+    // No Telegram WebApp SDK initialization needed here anymore
+    
+    // Attempt to parse Telegram-like initData from URL for user info if available
+    const urlParams = new URLSearchParams(window.location.search);
+    const initDataRaw = urlParams.get('tgWebAppInitData');
+    if (initDataRaw) {
+      try {
+        // Note: In real scenarios, initData should be validated server-side
+        const decodedInitData = Object.fromEntries(new URLSearchParams(initDataRaw));
+        // Basic parsing for user data - adjust as per actual initData structure
+        if (decodedInitData.user) {
+          const parsedUser = JSON.parse(decodedInitData.user);
+          setUser(parsedUser);
+          console.log('useTelegram: Parsed user from initData', parsedUser);
+        }
+      } catch (e) {
+        console.error('useTelegram: Failed to parse initData from URL', e);
       }
-
-      // Получаем параметры темы
-      if (tg.themeParams) {
-        setTheme(tg.themeParams)
-      }
-
-      // Настраиваем цвета под тему DexSafe (с проверкой версии)
-      const minVersionForColorSupport = '6.1' // Примерная версия, где появилась поддержка
-      if (tg.version && tg.version >= minVersionForColorSupport) {
-        tg.setHeaderColor('#12141A')
-        tg.setBackgroundColor('#12141A')
-      }
-      setHeaderColor('#12141A')
-      setBackgroundColor('#12141A')
-
-      // Устанавливаем WebApp объект для дальнейшего использования
-      setWebApp(tg)
-
-      setIsReady(true)
     }
+
+    // For a generic web app, colors are set via CSS or theme context directly
+    // setHeaderColor and setBackgroundColor are no longer Telegram SDK specific
+    // They now control component-level state if needed
+
   }, [])
 
-  // Функция для обновления цветов темы
-  const updateThemeColors = (headerColor: string, backgroundColor: string) => {
-    if (window.Telegram?.WebApp) {
-      const tg = window.Telegram.WebApp
-      const minVersionForColorSupport = '6.1'
-      if (tg.version && tg.version >= minVersionForColorSupport) {
-        tg.setHeaderColor(headerColor)
-        tg.setBackgroundColor(backgroundColor)
-      }
-    }
+  // Function for updating theme colors (now controls local state)
+  const updateThemeColors = (newHeaderColor: string, newBackgroundColor: string) => {
+    setHeaderColor(newHeaderColor)
+    setBackgroundColor(newBackgroundColor)
   }
 
-  // Функция для скрытия клавиатуры
+  // Functions adapted for generic web context
   const hideKeyboard = () => {
-    window.Telegram?.WebApp?.HapticFeedback?.impactOccurred('light')
-    if (window.Telegram?.WebApp?.hideKeyboard) {
-      window.Telegram.WebApp.hideKeyboard()
-    } else if (document.activeElement instanceof HTMLElement) {
+    if (document.activeElement instanceof HTMLElement) {
       document.activeElement.blur();
     }
   }
 
-  // Функция для вызова haptic feedback
   const hapticFeedback = (type: 'impact' | 'notification' | 'selection' = 'impact', impactStyle: 'light' | 'medium' | 'heavy' = 'medium') => {
-    if (window.Telegram?.WebApp?.HapticFeedback) {
-      if (type === 'impact') {
-        window.Telegram.WebApp.HapticFeedback.impactOccurred(impactStyle)
-      } else if (type === 'notification') {
-        window.Telegram.WebApp.HapticFeedback.notificationOccurred('success') // или 'error', 'warning'
-      } else if (type === 'selection') {
-        window.Telegram.WebApp.HapticFeedback.selectionChanged()
-      }
-    }
+    // No haptic feedback in generic web apps unless custom implemented
+    console.log(`Haptic Feedback: ${type} - ${impactStyle}`)
   }
 
   const showAlert = (message: string) => {
-    if (window.Telegram?.WebApp) {
-      window.Telegram.WebApp.showAlert(message)
-    } else {
-      alert(message)
-    }
+    alert(message)
   }
 
   const showConfirm = (message: string, callback: (confirmed: boolean) => void) => {
-    if (window.Telegram?.WebApp) {
-      window.Telegram.WebApp.showConfirm(message, callback)
-    } else {
-      const confirmed = confirm(message)
-      callback(confirmed)
-    }
+    const confirmed = confirm(message)
+    callback(confirmed)
   }
 
+  // showPopup will need a custom React Modal component or be replaced by showAlert/showConfirm
   const showPopup = (params: { title?: string, message: string, buttons?: Array<{ id: string, type?: 'default' | 'destructive' | 'ok' }> }, callback?: (buttonId: string) => void) => {
-    window.Telegram?.WebApp?.showPopup(params, callback)
+    console.warn('showPopup not fully implemented for generic web app. Using alert instead.')
+    showAlert(params.message);
+    if (callback && params.buttons && params.buttons.length > 0) {
+        // Mocking a button click for popup
+        callback(params.buttons[0].id);
+    }
   }
 
   const close = () => {
-    window.Telegram?.WebApp?.close()
+    window.close() // Closes current window/tab
   }
 
   const openLink = (url: string, options?: { try_instant_view?: boolean }) => {
-    if (window.Telegram?.WebApp) {
-      window.Telegram.WebApp.openLink(url, options)
-    } else {
-      window.open(url, '_blank')
-    }
+    window.open(url, '_blank') // Opens in new tab
   }
 
   const openTelegramLink = (url: string) => {
-    window.Telegram?.WebApp?.openTelegramLink(url)
+    window.open(url, '_blank') // Opens Telegram link in new tab, user navigates
   }
 
-  // Функция для сворачивания/разворачивания приложения
-  const toggleExpand = () => {
-    if (window.Telegram?.WebApp) {
-      if (isExpanded) {
-        window.Telegram.WebApp.close()
-      } else {
-        window.Telegram.WebApp.expand()
-        setIsExpanded(true)
-      }
-    }
-  }
-
-  // Функция для установки значения в облаке
+  // Cloud storage functionalities are Telegram-specific and cannot be replicated directly in a generic web app
   const setCloudStorageValue = (key: string, value: string, callback?: (error?: string) => void) => {
-    window.Telegram?.WebApp?.CloudStorage?.setItem(key, value, callback)
+    console.warn('CloudStorage is Telegram-specific and not available in generic web app.')
+    callback?.('CloudStorage not available')
   }
 
-  // Функция для получения значения из облака
   const getCloudStorageValue = (key: string, callback?: (error: string | null, value: string | null) => void) => {
-    window.Telegram?.WebApp?.CloudStorage?.getItem(key, callback)
+    console.warn('CloudStorage is Telegram-specific and not available in generic web app.')
+    callback?.('CloudStorage not available', null)
   }
 
   return {
     user,
-    webApp,
+    webApp: null, // No Telegram WebApp object in generic context
     theme,
     isReady,
     isExpanded,
@@ -174,7 +134,7 @@ export const useTelegram = () => {
     close,
     openLink,
     openTelegramLink,
-    toggleExpand,
+    toggleExpand: () => console.warn('toggleExpand is Telegram-specific and not available in generic web app.'),
     setCloudStorageValue,
     getCloudStorageValue,
   }
