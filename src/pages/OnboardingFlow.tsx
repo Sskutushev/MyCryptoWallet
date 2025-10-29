@@ -3,16 +3,25 @@ import { useNavigate } from 'react-router-dom'
 import { Button } from '../components/common/Button'
 import { Input } from '../components/common/Input'
 import { useWallet } from '../hooks/useWallet'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Shield, Key, Leaf } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Shield, Key, Leaf, Copy, Eye, EyeOff } from 'lucide-react'
+import { useToast } from '../components/common/Toast'
 
 export const OnboardingFlow = () => {
   const navigate = useNavigate()
   const { createWallet, importWallet } = useWallet()
+  const { showToast } = useToast()
   const [step, setStep] = useState<'welcome' | 'create' | 'import' | 'backup'>('welcome')
   const [mnemonic, setMnemonic] = useState('')
+  const [newMnemonic, setNewMnemonic] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [isMnemonicVisible, setIsMnemonicVisible] = useState(false)
+
+  const handleCopyToClipboard = () => {
+    navigator.clipboard.writeText(newMnemonic)
+    showToast('success', 'Seed-фраза скопирована!')
+  }
 
   // Welcome Screen
   if (step === 'welcome') {
@@ -143,7 +152,8 @@ export const OnboardingFlow = () => {
               fullWidth
               disabled={!password || password !== confirmPassword || password.length < 8}
               onClick={async () => {
-                await createWallet()
+                const { mnemonic } = await createWallet(password)
+                setNewMnemonic(mnemonic)
                 setStep('backup')
               }}
             >
@@ -203,10 +213,10 @@ export const OnboardingFlow = () => {
               disabled={!mnemonic || !password || password.length < 8}
               onClick={async () => {
                 try {
-                  await importWallet(mnemonic)
+                  await importWallet(mnemonic, password)
                   navigate('/')
                 } catch (error) {
-                  alert('Неверная seed-фраза')
+                  showToast('error', 'Неверная seed-фраза')
                 }
               }}
             >
@@ -246,25 +256,29 @@ export const OnboardingFlow = () => {
             </p>
           </div>
 
-          {/* Seed phrase (замаскирована) */}
-          <div className="p-4 bg-c-bg-secondary rounded-lg">
-            <div className="grid grid-cols-2 gap-2">
-              {Array(12).fill(0).map((_, i) => (
-                <div key={i} className="p-2 bg-c-bg-tertiary rounded text-center">
-                  <span className="text-c-text-tertiary text-sm">{i + 1}.</span>
-                  <span className="ml-2 text-c-text-primary font-mono">•••••</span>
+          {/* Seed phrase */}
+          <div className="relative p-4 bg-c-bg-secondary rounded-lg">
+            <div className={`grid grid-cols-3 gap-3 font-mono transition-opacity duration-300 ${isMnemonicVisible ? 'opacity-100' : 'opacity-20 blur-sm'}`}>
+              {newMnemonic.split(' ').map((word, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <span className="text-c-text-tertiary text-sm select-none">
+                    {i + 1}.
+                  </span>
+                  <span className="text-c-text-primary">
+                    {word}
+                  </span>
                 </div>
               ))}
             </div>
+            <div className="absolute top-3 right-3 flex gap-2">
+              <button onClick={handleCopyToClipboard} className="text-c-text-secondary hover:text-c-primary">
+                <Copy className="w-5 h-5" />
+              </button>
+              <button onClick={() => setIsMnemonicVisible(!isMnemonicVisible)} className="text-c-text-secondary hover:text-c-primary">
+                {isMnemonicVisible ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+              </button>
+            </div>
           </div>
-
-          <Button
-            variant="outline"
-            size="lg"
-            fullWidth
-          >
-            Показать seed-фразу
-          </Button>
 
           <div className="space-y-3">
             <Button

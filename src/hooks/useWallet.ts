@@ -1,62 +1,87 @@
 import { create } from 'zustand'
 import { ethers } from 'ethers'
 import { x1Provider } from '../lib/api/x1chain'
+import { secureStorage } from '../lib/security/secureStorage'
+
+// Этот кошелек будет храниться только в оперативной памяти
+let sessionWallet: ethers.Wallet | null = null
 
 interface WalletState {
   address: string | null
-  privateKey: string | null
-  mnemonic: string | null
+  encryptedWallet: string | null
   isLocked: boolean
+  hasWallet: boolean
   balance: string
   tokens: Array<{
     symbol: string
     balance: string
     name: string
   }>
-  createWallet: () => Promise<void>
-  importWallet: (mnemonic: string) => Promise<void>
-  lock: () => void
-  unlock: (password: string) => Promise<boolean>
-  signTransaction: (tx: ethers.TransactionRequest) => Promise<string>
-  getBalance: () => Promise<void>
-  getTokens: () => Promise<void>
-  connect: () => Promise<void>
-  disconnect: () => Promise<void>
+  createWallet: (password: string) => Promise<{ address: string; mnemonic: string }>,
+  importWallet: (mnemonic: string, password: string) => Promise<string>,
+  lock: () => void,
+  unlock: (password: string) => Promise<boolean>,
+  signTransaction: (tx: ethers.TransactionRequest) => Promise<string>,
+  getBalance: () => Promise<void>,
+  getTokens: () => Promise<void>,
+  disconnect: () => Promise<void>,
+  loadWallet: () => void,
 }
 
 export const useWallet = create<WalletState>((set, get) => ({
   address: null,
-  privateKey: null,
-  mnemonic: null,
+  encryptedWallet: null,
   isLocked: true,
+  hasWallet: false,
   balance: '0',
   tokens: [],
 
-  createWallet: async () => {
-    // Генерация нового кошелька
+  loadWallet: () => {
+    const encryptedWallet = secureStorage.getItem('encryptedWallet')
+    if (encryptedWallet) {
+      const walletData = JSON.parse(encryptedWallet)
+      set({
+        hasWallet: true,
+        address: walletData.address,
+        encryptedWallet,
+      })
+    }
+  },
+
+  createWallet: async (password: string) => {
+    secureStorage.initialize(password)
     const wallet = ethers.Wallet.createRandom()
+    const encryptedJson = await wallet.encrypt(password)
     
-    // В реальном приложении нужно зашифровать privateKey и mnemonic с помощью пароля пользователя
-    // Использовать ethers.Wallet.encrypt()
+    secureStorage.setItem('encryptedWallet', encryptedJson)
+    sessionWallet = wallet
     
     set({
       address: wallet.address,
-      privateKey: wallet.privateKey,
-      mnemonic: wallet.mnemonic?.phrase,
+      encryptedWallet: encryptedJson,
       isLocked: false,
+      hasWallet: true,
     })
+    
+    return { address: wallet.address, mnemonic: wallet.mnemonic!.phrase }
   },
 
-  importWallet: async (mnemonic: string) => {
+  importWallet: async (mnemonic: string, password: string) => {
     try {
+      secureStorage.initialize(password)
       const wallet = ethers.Wallet.fromPhrase(mnemonic)
+      const encryptedJson = await wallet.encrypt(password)
       
+      secureStorage.setItem('encryptedWallet', encryptedJson)
+      sessionWallet = wallet
+
       set({
         address: wallet.address,
-        privateKey: wallet.privateKey,
-        mnemonic: wallet.mnemonic?.phrase,
+        encryptedWallet: encryptedJson,
         isLocked: false,
+        hasWallet: true,
       })
+      return wallet.address
     } catch (error) {
       console.error('Invalid mnemonic:', error)
       throw new Error('Неверная seed-фраза')
@@ -64,27 +89,34 @@ export const useWallet = create<WalletState>((set, get) => ({
   },
 
   lock: () => {
+    sessionWallet = null
+    secureStorage.clear()
     set({ isLocked: true })
   },
 
   unlock: async (password: string) => {
-    // В реальном приложении нужно расшифровать privateKey используя пароль
-    // Использовать ethers.Wallet.decrypt()
-    
-    set({ isLocked: false })
-    return true
+    const { encryptedWallet } = get()
+    if (!encryptedWallet) return false
+
+    try {
+      secureStorage.initialize(password)
+      const wallet = await ethers.Wallet.fromEncryptedJson(encryptedWallet, password)
+      sessionWallet = wallet
+      set({ isLocked: false })
+      return true
+    } catch (error) {
+      console.error('Failed to unlock wallet:', error)
+      return false
+    }
   },
 
   signTransaction: async (tx: ethers.TransactionRequest) => {
-    const { privateKey, isLocked } = get()
-    
-    if (isLocked || !privateKey) {
-      throw new Error('Wallet is locked')
+    if (!sessionWallet) {
+      throw new Error('Wallet is locked or not initialized')
     }
 
-    const wallet = new ethers.Wallet(privateKey)
-    const populatedTx = await wallet.populateTransaction(tx)
-    const signedTx = await wallet.signTransaction(populatedTx)
+    const populatedTx = await sessionWallet.populateTransaction(tx)
+    const signedTx = await sessionWallet.signTransaction(populatedTx)
     
     return signedTx
   },
@@ -95,19 +127,14 @@ export const useWallet = create<WalletState>((set, get) => ({
 
     try {
       const balance = await x1Provider.getBalance(address)
-      set({ balance })
+      set({ balance: ethers.formatEther(balance) })
     } catch (error) {
       console.error('Failed to get balance:', error)
     }
   },
 
   getTokens: async () => {
-    const { address } = get()
-    if (!address) return
-
-    // В реальном приложении здесь будет логика получения токенов
-    // из разных блокчейнов и их балансов
-    
+    // Mock data, as before
     set({
       tokens: [
         { symbol: 'XEC', balance: '0', name: 'X1 EcoChain Token' },
@@ -117,18 +144,14 @@ export const useWallet = create<WalletState>((set, get) => ({
     })
   },
 
-  connect: async () => {
-    // В реальном приложении здесь будет логика подключения
-    // к различным провайдерам (MetaMask, WalletConnect и т.д.)
-    console.log('Connecting wallet...')
-  },
-
   disconnect: async () => {
+    secureStorage.removeItem('encryptedWallet')
+    sessionWallet = null
     set({
       address: null,
-      privateKey: null,
-      mnemonic: null,
+      encryptedWallet: null,
       isLocked: true,
+      hasWallet: false,
       balance: '0',
       tokens: [],
     })

@@ -47,14 +47,14 @@ export const Settings = () => {
           value: currency,
           type: 'select',
           options: ['USD', 'EUR', 'RUB'] as const,
-          onChange: (val: string) => setCurrency(val as any)
+          onChange: (val: string) => setCurrency(val as 'USD' | 'EUR' | 'RUB')
         },
         { 
           label: 'Язык', 
           value: language,
           type: 'select',
           options: ['en', 'ru'] as const,
-          onChange: (val: string) => setLanguage(val as any)
+          onChange: (val: string) => setLanguage(val as 'en' | 'ru')
         },
         { label: 'Тема оформления', path: '/settings/theme' },
       ]

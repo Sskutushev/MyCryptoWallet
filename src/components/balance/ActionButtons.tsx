@@ -1,7 +1,8 @@
+import { memo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowUpRight, ArrowDownLeft, ArrowLeftRight } from 'lucide-react'
 
-export const ActionButtons = () => {
+export const ActionButtons = memo(() => {
   const navigate = useNavigate()
 
   const actions = [
@@ -51,4 +52,4 @@ export const ActionButtons = () => {
       })}
     </div>
   )
-}
+})

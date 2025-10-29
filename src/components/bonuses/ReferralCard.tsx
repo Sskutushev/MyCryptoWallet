@@ -1,17 +1,9 @@
 import { Card } from '../common/Card'
 import { Button } from '../common/Button'
 import { Copy, Share2, Users } from 'lucide-react'
+import { referralCode, referralStats } from '../../mock/referrals'
 
 export const ReferralCard = () => {
-  const referralCode = 'DEXSAFE-ABC123'
-  const stats = {
-    invited: 5,
-    earned: {
-      wltx: 150,
-      spins: 10
-    }
-  }
-
   const copyCode = () => {
     navigator.clipboard.writeText(referralCode)
     // TODO: Toast
@@ -62,17 +54,17 @@ export const ReferralCard = () => {
           <div className="p-3 bg-c-bg-tertiary rounded-lg">
             <p className="text-xs text-c-text-tertiary mb-1">Приглашено</p>
             <p className="text-2xl font-bold text-c-text-primary">
-              {stats.invited}
+              {referralStats.invited}
             </p>
           </div>
           
           <div className="p-3 bg-c-primary/10 rounded-lg">
             <p className="text-xs text-c-text-tertiary mb-1">Заработано</p>
             <p className="text-lg font-bold text-c-primary">
-              {stats.earned.wltx} WLTX
+              {referralStats.earned.wltx} WLTX
             </p>
             <p className="text-xs text-c-text-secondary">
-              {stats.earned.spins} спинов
+              {referralStats.earned.spins} спинов
             </p>
           </div>
         </div>

@@ -5,14 +5,12 @@ import { Card } from '../components/common/Card'
 import { Button } from '../components/common/Button'
 import { ArrowRight, Info } from 'lucide-react'
 import { CFAToken } from '../types'
+import { useDeFiStore } from '../store/defiStore'
+
+import { cfaTokens } from '../mock/cfa'
 
 export const DeFi = () => {
-  // Mock ЦФА токены
-  const cfaTokens: CFAToken[] = [
-    { symbol: 'YNDX', name: 'Яндекс', type: 'stock', price: 2450.50, change24h: 2.3, icon: '🔴' },
-    { symbol: 'AAPL', name: 'Apple Inc', type: 'stock', price: 178.45, change24h: 1.2, icon: '🍎' },
-    { symbol: 'TSLA', name: 'Tesla', type: 'stock', price: 245.67, change24h: -0.8, icon: '🚗' },
-  ]
+  const { lendingPositions } = useDeFiStore()
 
   return (
     <PageContainer>
@@ -29,6 +27,27 @@ export const DeFi = () => {
 
         {/* Кредитование */}
         <LendingCard />
+
+        {/* Мои позиции */}
+        {lendingPositions.length > 0 && (
+          <div className="space-y-3">
+            <h3 className="text-lg font-bold text-c-text-primary">Мои позиции</h3>
+            {lendingPositions.map((pos) => (
+              <Card key={pos.id} padding="md">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <p className="text-sm text-c-text-secondary">Залог: <span className="font-medium text-c-text-primary">{pos.collateralAmount} {pos.collateralToken}</span></p>
+                    <p className="text-sm text-c-text-secondary">Заём: <span className="font-medium text-c-text-primary">{pos.borrowedAmount} {pos.borrowedToken}</span></p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm font-medium text-c-success">APY {pos.apy}%</p>
+                    <p className="text-xs text-c-text-tertiary">LTV {pos.ltv.toFixed(1)}%</p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        )}
 
         {/* Разделитель */}
         <div className="flex items-center gap-4">

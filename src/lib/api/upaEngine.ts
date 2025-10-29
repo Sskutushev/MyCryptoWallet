@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // UPA Engine Sidecar Service
-const UPA_API_URL = process.env.VITE_UPA_ENGINE_URL || 'http://localhost:3001'
+const UPA_API_URL = import.meta.env.VITE_UPA_ENGINE_URL || 'http://localhost:3001'
 
 interface AddressAnalysisResult {
   type: 'EVM' | 'Non-EVM'

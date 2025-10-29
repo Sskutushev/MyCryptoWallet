@@ -54,6 +54,11 @@ class SecureStorage {
   clear() {
     this.encryptionKey = null
   }
+
+  // Удаление из localStorage
+  removeItem(key: string) {
+    localStorage.removeItem(key)
+  }
 }
 
 export const secureStorage = new SecureStorage()

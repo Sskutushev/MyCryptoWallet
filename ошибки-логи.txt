@@ -1,0 +1,7 @@
+Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_set_header_color {color_key: 'bg_color'}
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_set_bottom_bar_color {color: '#ffffff'}
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_theme 
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_viewport 
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_safe_area 
+telegram-web-app.js:135 [Telegram.WebView] > postEvent web_app_request_content_safe_area 

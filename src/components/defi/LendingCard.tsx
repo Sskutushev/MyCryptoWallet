@@ -1,11 +1,20 @@
 import { Card } from '../common/Card'
 import { Button } from '../common/Button'
 import { TrendingUp, Shield } from 'lucide-react'
+import { useDeFiStore } from '../../store/defiStore'
+import { useToast } from '../common/Toast'
 
 export const LendingCard = () => {
-  // TODO: Получить из defiStore
-  const availableCredit = 0
-  const activeLoan = null
+  const { availableCredit } = useDeFiStore()
+  const { showToast } = useToast()
+
+  const handleProvideLiquidity = () => {
+    showToast('info', 'Функция размещения ликвидности скоро будет доступна!')
+  }
+
+  const handleGetLoan = () => {
+    showToast('info', 'Функция получения займа скоро будет доступна!')
+  }
 
   return (
     <Card padding="lg" className="space-y-4">
@@ -26,7 +35,7 @@ export const LendingCard = () => {
           Доступный лимит
         </p>
         <h2 className="text-3xl font-bold text-c-text-primary">
-          ${availableCredit.toLocaleString()}
+          ${availableCredit.toLocaleString('en-US')}
         </h2>
         <p className="text-xs text-c-text-tertiary mt-1">
           Под залог ваших активов
@@ -47,11 +56,11 @@ export const LendingCard = () => {
 
       {/* Действия */}
       <div className="grid grid-cols-2 gap-3">
-        <Button variant="outline" fullWidth>
+        <Button variant="outline" fullWidth onClick={handleProvideLiquidity}>
           <TrendingUp className="w-4 h-4 mr-2" />
           Разместить
         </Button>
-        <Button variant="primary" fullWidth>
+        <Button variant="primary" fullWidth onClick={handleGetLoan}>
           Получить займ
         </Button>
       </div>
