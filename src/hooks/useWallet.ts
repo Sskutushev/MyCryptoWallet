@@ -4,7 +4,7 @@ import { x1Provider } from '../lib/api/x1chain'
 import { secureStorage } from '../lib/security/secureStorage'
 
 // Этот кошелек будет храниться только в оперативной памяти
-let sessionWallet: ethers.Wallet | null = null
+let sessionWallet: ethers.Signer | null = null
 
 interface WalletState {
   address: string | null
@@ -50,7 +50,7 @@ export const useWallet = create<WalletState>((set, get) => ({
 
   createWallet: async (password: string) => {
     secureStorage.initialize(password)
-    const wallet = ethers.Wallet.createRandom()
+    const wallet = ethers.Wallet.createRandom() as ethers.HDNodeWallet
     const encryptedJson = await wallet.encrypt(password)
     
     secureStorage.setItem('encryptedWallet', encryptedJson)
@@ -63,13 +63,13 @@ export const useWallet = create<WalletState>((set, get) => ({
       hasWallet: true,
     })
     
-    return { address: wallet.address, mnemonic: wallet.mnemonic!.phrase }
+    return { address: wallet.address, mnemonic: wallet.mnemonic?.phrase || '' }
   },
 
   importWallet: async (mnemonic: string, password: string) => {
     try {
       secureStorage.initialize(password)
-      const wallet = ethers.Wallet.fromPhrase(mnemonic)
+      const wallet = ethers.Wallet.fromPhrase(mnemonic) as ethers.HDNodeWallet
       const encryptedJson = await wallet.encrypt(password)
       
       secureStorage.setItem('encryptedWallet', encryptedJson)

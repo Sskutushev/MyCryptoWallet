@@ -1,3 +1,5 @@
+declare function gtag(...args: any[]): void;
+
 class Analytics {
   private enabled = true
 

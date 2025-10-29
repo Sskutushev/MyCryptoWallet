@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 export interface ChainConfig {
   id: number
   name: string

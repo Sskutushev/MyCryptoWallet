@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '../common/Button'
-import { Card } from '../common/Card'
 import { useToast } from '../common/Toast'
 
 interface SpinReward {

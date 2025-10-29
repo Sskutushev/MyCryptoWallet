@@ -1,4 +1,4 @@
-import { useTelegram } from '../hooks/useTelegram'
+/// <reference types="../types/telegram" />
 
 // Telegram WebApp API Service
 class TelegramService {
@@ -10,22 +10,6 @@ class TelegramService {
   private init() {
     // Автоматическая инициализация через useTelegram hook
     console.log('TelegramService initialized')
-  }
-
-  // Возвращает данные Telegram WebApp
-  static useTelegram() {
-    return useTelegram()
-  }
-
-  // Форматирует сумму для отображения в Telegram
-  formatAmount(amount: number, currency: string = 'USD'): string {
-    // Возвращает сумму в формате, подходящем для Telegram
-    return new Intl.NumberFormat('ru-RU', {
-      style: 'currency',
-      currency: currency,
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 6
-    }).format(amount)
   }
 
   // Проверяет, запущено ли приложение в Telegram

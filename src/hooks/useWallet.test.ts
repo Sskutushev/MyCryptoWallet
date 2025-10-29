@@ -28,7 +28,7 @@ describe('useWallet Hook', () => {
       if (mnemonic === testMnemonic) return testWallet;
       throw new Error('Invalid mnemonic');
     });
-    vi.spyOn(ethers.Wallet, 'fromEncryptedJson').mockImplementation(async (json, password) => {
+    vi.spyOn(ethers.Wallet, 'fromEncryptedJson').mockImplementation(async (encryptedJson, password) => {
       if (password === testPassword) return testWallet;
       throw new Error('bad password');
     });
@@ -42,14 +42,14 @@ describe('useWallet Hook', () => {
 
   it('should create a new wallet, encrypt it, and set state', async () => {
     const { result } = renderHook(() => useWallet())
-    let address, mnemonic
-    await act(async () => {
-      const res = await result.current.createWallet(testPassword)
-      address = res.address
-      mnemonic = res.mnemonic
-    })
-    expect(address).toBe(testWallet.address)
-    expect(mnemonic.split(' ').length).toBe(12)
+        let address
+        await act(async () => {
+          const res = await result.current.createWallet(testPassword)
+          address = res.address
+        })
+    
+        expect(address).toBe(testWallet.address)
+        expect(testWallet.mnemonic?.phrase.split(' ').length).toBe(12)
     const state = result.current
     expect(state.address).toBe(testWallet.address)
     expect(state.hasWallet).toBe(true)

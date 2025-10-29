@@ -4,7 +4,6 @@ import { ChevronDown, Settings as SettingsIcon } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useWallet } from '../../hooks/useWallet'
 import { TokenCardSkeleton } from '../common/Skeleton'
-import { Token } from '../../types'
 
 interface TokenListProps {
   loading: boolean
@@ -13,7 +12,6 @@ interface TokenListProps {
 export const TokenList = ({ loading }: TokenListProps) => {
   const navigate = useNavigate()
   const { tokens } = useWallet()
-  const [sortBy, setSortBy] = useState<'balance' | 'name' | 'change'>('balance')
 
   // TODO: Implement sorting logic
 

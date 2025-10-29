@@ -1,7 +1,6 @@
 import { Card } from '../common/Card'
 import { Button } from '../common/Button'
-import { CheckCircle, Lock } from 'lucide-react'
-import { Mission } from '../../types'
+import { CheckCircle } from 'lucide-react'
 import { missions } from '../../mock/missions'
 
 export const MissionsCard = () => {

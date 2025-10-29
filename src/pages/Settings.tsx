@@ -138,7 +138,7 @@ export const Settings = () => {
                           onChange={item.onChange as (enabled: boolean) => void}
                         />
                       </div>
-                    ) : item.type === 'select' ? (
+                    ) : item.type === 'select' && item.options ? (
                       <div className="flex items-center justify-between p-3">
                         <span className="text-c-text-primary">{item.label}</span>
                         <select
@@ -146,22 +146,22 @@ export const Settings = () => {
                           onChange={(e) => item.onChange?.(e.target.value)}
                           className="px-3 py-1 bg-c-bg-tertiary border border-c-border rounded text-c-text-primary"
                         >
-                          {(item.options as readonly string[]).map((opt) => (
+                          {item.options.map((opt) => (
                             <option key={opt} value={opt}>
                               {opt}
                             </option>
                           ))}
                         </select>
                       </div>
-                    ) : (
+                    ) : item.path ? (
                       <button
-                        onClick={() => item.path && navigate(item.path)}
+                        onClick={() => navigate(item.path!)}
                         className="w-full flex items-center justify-between p-3 hover:bg-c-bg-tertiary transition-colors"
                       >
                         <span className="text-c-text-primary">{item.label}</span>
                         <ChevronRight className="w-5 h-5 text-c-text-tertiary" />
                       </button>
-                    )}
+                    ) : null}
                     
                     {index < section.items.length - 1 && (
                       <div className="h-px bg-c-border mx-3" />

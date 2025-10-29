@@ -1,5 +1,4 @@
 import { ethers } from 'ethers'
-import { walletService } from './wallet'
 
 class SignerService {
   private signer: ethers.JsonRpcSigner | null = null

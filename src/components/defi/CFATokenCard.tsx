@@ -1,5 +1,5 @@
 import { Card } from '../common/Card'
-import { TrendingUp, ArrowUpRight } from 'lucide-react'
+import { TrendingUp } from 'lucide-react'
 import { CFAToken } from '../../types'
 
 export const CFATokenCard = ({ token }: { token: CFAToken }) => {

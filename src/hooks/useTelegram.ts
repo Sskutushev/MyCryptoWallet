@@ -29,7 +29,7 @@ export const useTelegram = () => {
 
   useEffect(() => {
     // Проверяем доступность Telegram WebApp
-    if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
+    if (window.Telegram?.WebApp) {
       const tg = window.Telegram.WebApp
 
       // Инициализация
@@ -71,10 +71,8 @@ export const useTelegram = () => {
 
   // Функция для скрытия клавиатуры
   const hideKeyboard = () => {
-    if (window.Telegram?.WebApp) {
-      window.Telegram.WebApp.HapticFeedback?.impactOccurred('light')
-      return window.Telegram.WebApp.hideKeyboard()
-    }
+    window.Telegram?.WebApp?.HapticFeedback?.impactOccurred('light')
+    return window.Telegram?.WebApp?.hideKeyboard()
   }
 
   // Функция для вызова haptic feedback
@@ -108,15 +106,11 @@ export const useTelegram = () => {
   }
 
   const showPopup = (params: { title?: string, message: string, buttons?: Array<{ id: string, type?: 'default' | 'destructive' | 'ok' }> }, callback?: (buttonId: string) => void) => {
-    if (window.Telegram?.WebApp) {
-      window.Telegram.WebApp.showPopup(params, callback)
-    }
+    window.Telegram?.WebApp?.showPopup(params, callback)
   }
 
   const close = () => {
-    if (window.Telegram?.WebApp) {
-      window.Telegram.WebApp.close()
-    }
+    window.Telegram?.WebApp?.close()
   }
 
   const openLink = (url: string, options?: { try_instant_view?: boolean }) => {
@@ -128,9 +122,7 @@ export const useTelegram = () => {
   }
 
   const openTelegramLink = (url: string) => {
-    if (window.Telegram?.WebApp) {
-      window.Telegram.WebApp.openTelegramLink(url)
-    }
+    window.Telegram?.WebApp?.openTelegramLink(url)
   }
 
   // Функция для сворачивания/разворачивания приложения
@@ -147,16 +139,12 @@ export const useTelegram = () => {
 
   // Функция для установки значения в облаке
   const setCloudStorageValue = (key: string, value: string, callback?: (error?: string) => void) => {
-    if (window.Telegram?.WebApp?.CloudStorage) {
-      window.Telegram.WebApp.CloudStorage.setItem(key, value, callback)
-    }
+    window.Telegram?.WebApp?.CloudStorage?.setItem(key, value, callback)
   }
 
   // Функция для получения значения из облака
   const getCloudStorageValue = (key: string, callback?: (error: string | null, value: string | null) => void) => {
-    if (window.Telegram?.WebApp?.CloudStorage) {
-      window.Telegram.WebApp.CloudStorage.getItem(key, callback)
-    }
+    window.Telegram?.WebApp?.CloudStorage?.getItem(key, callback)
   }
 
   return {
