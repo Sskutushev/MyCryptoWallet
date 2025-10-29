@@ -8,7 +8,6 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   fullWidth?: boolean
   loading?: boolean
   children: ReactNode
-  onAnimationStart?: any; // Bypass framer-motion type conflict
 }
 
 export const Button = ({
@@ -35,9 +34,7 @@ export const Button = ({
   }
 
   return (
-    <motion.button
-      whileHover={{ scale: disabled ? 1 : 1.02 }}
-      whileTap={{ scale: disabled ? 1 : 0.98 }}
+    <button
       className={`
         ${variants[variant]}
         ${sizes[size]}
@@ -52,6 +49,6 @@ export const Button = ({
     >
       {loading && <Loader2 className="w-4 h-4 animate-spin" />}
       {children}
-    </motion.button>
+    </button>
   )
 }

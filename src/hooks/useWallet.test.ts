@@ -13,6 +13,7 @@ vi.mock('../lib/security/secureStorage', () => {
       getItem: (key: string) => store[key] || null,
       removeItem: (key: string) => { delete store[key] },
       clear: () => { store = {} },
+      initialize: () => {},
     }
   }
 })
@@ -24,11 +25,11 @@ describe('useWallet Hook', () => {
 
   beforeEach(() => {
     vi.spyOn(ethers.Wallet, 'createRandom').mockReturnValue(testWallet)
-    vi.spyOn(ethers.Wallet, 'fromPhrase').mockImplementation((mnemonic) => {
+    vi.spyOn(ethers.Wallet, 'fromPhrase').mockImplementation((mnemonic: string) => {
       if (mnemonic === testMnemonic) return testWallet;
       throw new Error('Invalid mnemonic');
     });
-    vi.spyOn(ethers.Wallet, 'fromEncryptedJson').mockImplementation(async (encryptedJson, password) => {
+    vi.spyOn(ethers.Wallet, 'fromEncryptedJson').mockImplementation(async (_json: string, password: string | Uint8Array) => {
       if (password === testPassword) return testWallet;
       throw new Error('bad password');
     });
@@ -42,14 +43,15 @@ describe('useWallet Hook', () => {
 
   it('should create a new wallet, encrypt it, and set state', async () => {
     const { result } = renderHook(() => useWallet())
-        let address
+        let address = ''
         await act(async () => {
           const res = await result.current.createWallet(testPassword)
           address = res.address
         })
     
         expect(address).toBe(testWallet.address)
-        expect(testWallet.mnemonic?.phrase.split(' ').length).toBe(12)
+        // Cast to any to access mnemonic property
+        expect((testWallet as any).mnemonic?.phrase.split(' ').length).toBe(12)
     const state = result.current
     expect(state.address).toBe(testWallet.address)
     expect(state.hasWallet).toBe(true)
@@ -59,7 +61,7 @@ describe('useWallet Hook', () => {
 
   it('should import a wallet from mnemonic, encrypt it, and set state', async () => {
     const { result } = renderHook(() => useWallet())
-    let address
+    let address = ''
     await act(async () => {
       address = await result.current.importWallet(testMnemonic, testPassword)
     })
@@ -90,7 +92,7 @@ describe('useWallet Hook', () => {
     const { result } = renderHook(() => useWallet())
     await act(async () => { await result.current.createWallet(testPassword) })
     act(() => { result.current.lock() })
-    let success
+    let success = false
     await act(async () => {
       success = await result.current.unlock(testPassword)
     })
@@ -102,7 +104,7 @@ describe('useWallet Hook', () => {
     const { result } = renderHook(() => useWallet())
     await act(async () => { await result.current.createWallet(testPassword) })
     act(() => { result.current.lock() })
-    let success
+    let success = false
     await act(async () => {
       success = await result.current.unlock('wrongpassword')
     })
@@ -114,12 +116,12 @@ describe('useWallet Hook', () => {
     const { result } = renderHook(() => useWallet())
     await act(async () => { await result.current.importWallet(testMnemonic, testPassword) })
     const tx = { to: '0xRecipientAddress', value: ethers.parseEther('0.1') }
-    let signedTx
+    let signedTx = ''
     await act(async () => {
       signedTx = await result.current.signTransaction(tx)
     })
-    expect(signedTx).to.be.a('string')
-    expect(signedTx as string).startsWith('0x')
+    expect(typeof signedTx).toBe('string')
+    expect(signedTx).toMatch(/^0x/)
   })
 
   it('should throw error when signing while locked', async () => {
@@ -127,8 +129,9 @@ describe('useWallet Hook', () => {
     await act(async () => { await result.current.createWallet(testPassword) })
     act(() => { result.current.lock() })
     const tx = { to: '0xRecipientAddress', value: ethers.parseEther('0.1') }
-    await expect(act(() => result.current.signTransaction(tx)))
-      .rejects.toThrow('Wallet is locked or not initialized')
+    await expect(act(async () => {
+      await result.current.signTransaction(tx)
+    })).rejects.toThrow('Wallet is locked or not initialized')
   })
 
   it('should load an existing wallet from storage', async () => {

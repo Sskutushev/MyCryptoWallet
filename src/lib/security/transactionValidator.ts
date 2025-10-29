@@ -79,10 +79,14 @@ class TransactionValidator {
     amount: number
     gasPrice: number
   }): Promise<SecurityCheck[]> {
+    // Получить реальные значения для сравнения
+    const avgAmount = 100; // TODO: Получить реальную среднюю сумму
+    const avgGasPrice = 20; // TODO: Получить реальную среднюю цену gas
+    
     const checks = await Promise.all([
       this.checkAddressReputation(tx.to),
-      this.checkAmount(tx.amount, 100), // TODO: Получить реальную среднюю сумму
-      this.checkGasPrice(tx.gasPrice, 20), // TODO: Получить реальную среднюю цену gas
+      this.checkAmount(tx.amount, avgAmount),
+      this.checkGasPrice(tx.gasPrice, avgGasPrice),
     ])
 
     return checks

@@ -72,7 +72,11 @@ export const useTelegram = () => {
   // Функция для скрытия клавиатуры
   const hideKeyboard = () => {
     window.Telegram?.WebApp?.HapticFeedback?.impactOccurred('light')
-    return window.Telegram?.WebApp?.hideKeyboard()
+    // Note: hideKeyboard is not a standard method in Telegram WebApp API
+    // Using blur on active element as an alternative
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
   }
 
   // Функция для вызова haptic feedback

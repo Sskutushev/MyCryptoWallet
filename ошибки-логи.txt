@@ -1,8 +1,8 @@
 Running build in Washington, D.C., USA (East) – iad1
 Build machine configuration: 2 cores, 8 GB
-Cloning github.com/Sskutushev/MyCryptoWallet (Branch: main, Commit: 235565e)
+Cloning github.com/Sskutushev/MyCryptoWallet (Branch: main, Commit: a3765b3)
 Previous build caches not available.
-Cloning completed: 223.000ms
+Cloning completed: 238.000ms
 Running "vercel build"
 Vercel CLI 48.6.0
 Installing dependencies...
@@ -20,30 +20,29 @@ added 759 packages in 12s
 > dexsafe-wallet-pro@2.0.0 build
 > tsc && vite build
 src/components/balance/TokenList.tsx(1,1): error TS6133: 'useState' is declared but its value is never read.
-src/components/common/Button.tsx(37,6): error TS2322: Type '{ children: (ReactNode | Element)[]; form?: string | undefined; formAction?: string | undefined; formEncType?: string | undefined; formMethod?: string | undefined; ... 270 more ...; disabled: boolean; }' is not assignable to type 'MotionProps'.
-  Types of property 'onAnimationStart' are incompatible.
-    Type 'AnimationEventHandler<HTMLButtonElement> | undefined' is not assignable to type '((definition: AnimationDefinition) => void) | undefined'.
-      Type 'AnimationEventHandler<HTMLButtonElement>' is not assignable to type '(definition: AnimationDefinition) => void'.
-        Types of parameters 'event' and 'definition' are incompatible.
-          Type 'AnimationDefinition' is not assignable to type 'AnimationEvent<HTMLButtonElement>'.
-            Type 'string' is not assignable to type 'AnimationEvent<HTMLButtonElement>'.
+src/components/common/Button.tsx(38,6): error TS2322: Type '{ children: (ReactNode | Element)[]; onAnimationStart?: any; form?: string | undefined; formAction?: string | undefined; formEncType?: string | undefined; formMethod?: string | undefined; ... 269 more ...; disabled: boolean; }' is not assignable to type 'MotionProps'.
+  Types of property 'onDragStart' are incompatible.
+    Type 'DragEventHandler<HTMLButtonElement> | undefined' is not assignable to type '((event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void) | undefined'.
+      Type 'DragEventHandler<HTMLButtonElement>' is not assignable to type '(event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void'.
+        Types of parameters 'event' and 'event' are incompatible.
+          Type 'MouseEvent | TouchEvent | PointerEvent' is not assignable to type 'DragEvent<HTMLButtonElement>'.
+            Type 'MouseEvent' is missing the following properties from type 'DragEvent<HTMLButtonElement>': dataTransfer, nativeEvent, isDefaultPrevented, isPropagationStopped, persist
 src/components/common/tests/Button.test.tsx(3,24): error TS2307: Cannot find module '@/components/common/Button' or its corresponding type declarations.
 src/components/common/tests/Button.test.tsx(8,42): error TS2339: Property 'toBeInTheDocument' does not exist on type 'Assertion<HTMLElement>'.
 src/components/common/tests/Button.test.tsx(21,42): error TS2339: Property 'toBeDisabled' does not exist on type 'Assertion<HTMLElement>'.
 src/components/common/tests/Button.test.tsx(26,40): error TS2339: Property 'toBeDisabled' does not exist on type 'Assertion<HTMLElement>'.
 src/hooks/useTelegram.ts(75,37): error TS2339: Property 'hideKeyboard' does not exist on type '{ initDataUnsafe?: any; themeParams?: any; ready: () => void; expand: () => void; setHeaderColor: (color: string) => void; setBackgroundColor: (color: string) => void; HapticFeedback?: { impactOccurred: (style: "light" | ... 1 more ... | "heavy") => void; notificationOccurred: (type: "success" | ... 1 more ... | "er...'.
 src/hooks/useWallet.test.ts(31,76): error TS6133: 'encryptedJson' is declared but its value is never read.
-src/hooks/useWallet.test.ts(121,44): error TS2339: Property 'startsWith' does not exist on type 'Assertion<any>'.
-src/hooks/useWallet.ts(42,37): error TS2345: Argument of type '{}' is not assignable to parameter of type 'string'.
-src/hooks/useWallet.ts(46,9): error TS2322: Type '{}' is not assignable to type 'string'.
-src/lib/api/telegram.ts(1,23): error TS2688: Cannot find type definition file for '../types/telegram'.
-src/lib/api/telegram.ts(23,37): error TS2339: Property 'version' does not exist on type '{ initDataUnsafe?: any; themeParams?: any; ready: () => void; expand: () => void; setHeaderColor: (color: string) => void; setBackgroundColor: (color: string) => void; HapticFeedback?: { impactOccurred: (style: "light" | ... 1 more ... | "heavy") => void; notificationOccurred: (type: "success" | ... 1 more ... | "er...'.
-src/lib/api/telegram.ts(70,30): error TS2339: Property 'sendData' does not exist on type '{ initDataUnsafe?: any; themeParams?: any; ready: () => void; expand: () => void; setHeaderColor: (color: string) => void; setBackgroundColor: (color: string) => void; HapticFeedback?: { impactOccurred: (style: "light" | ... 1 more ... | "heavy") => void; notificationOccurred: (type: "success" | ... 1 more ... | "er...'.
+src/hooks/useWallet.test.ts(122,12): error TS2352: Conversion of type 'undefined' to type 'string' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+src/hooks/useWallet.test.ts(122,32): error TS2339: Property 'startsWith' does not exist on type 'Assertion<string>'.
+src/hooks/useWallet.ts(43,39): error TS2345: Argument of type '{}' is not assignable to parameter of type 'string'.
+src/hooks/useWallet.ts(48,13): error TS2322: Type '{}' is not assignable to type 'string'.
+src/lib/api/telegram.ts(21,37): error TS2339: Property 'version' does not exist on type '{ initDataUnsafe?: any; themeParams?: any; ready: () => void; expand: () => void; setHeaderColor: (color: string) => void; setBackgroundColor: (color: string) => void; HapticFeedback?: { impactOccurred: (style: "light" | ... 1 more ... | "heavy") => void; notificationOccurred: (type: "success" | ... 1 more ... | "er...'.
+src/lib/api/telegram.ts(68,30): error TS2339: Property 'sendData' does not exist on type '{ initDataUnsafe?: any; themeParams?: any; ready: () => void; expand: () => void; setHeaderColor: (color: string) => void; setBackgroundColor: (color: string) => void; HapticFeedback?: { impactOccurred: (style: "light" | ... 1 more ... | "heavy") => void; notificationOccurred: (type: "success" | ... 1 more ... | "er...'.
 src/lib/security/transactionValidator.ts(9,32): error TS6133: 'address' is declared but its value is never read.
-src/lib/web3/signer.ts(39,30): error TS2339: Property 'getBalance' does not exist on type 'JsonRpcSigner'.
 src/pages/Settings.tsx(62,11): error TS2322: Type '(val: string) => void' is not assignable to type '(val: string | boolean) => void'.
   Types of parameters 'val' and 'val' are incompatible.
-    Type 'string | boolean' is not assignable to type 'string'.
+      Type 'string | boolean' is not assignable to type 'string'.
       Type 'boolean' is not assignable to type 'string'.
 src/pages/Settings.tsx(69,11): error TS2322: Type '(val: string) => void' is not assignable to type '(val: string | boolean) => void'.
   Types of parameters 'val' and 'val' are incompatible.

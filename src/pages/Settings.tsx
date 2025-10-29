@@ -7,7 +7,8 @@ import {
   Shield, 
   Globe, 
   LogOut,
-  ChevronRight 
+  ChevronRight,
+  HelpCircle 
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useSettingsStore } from '../store/settingsStore'
@@ -59,14 +60,14 @@ export const Settings = () => {
           value: currency,
           type: 'select',
           options: ['USD', 'EUR', 'RUB'] as const,
-          onChange: (val: string) => setCurrency(val as 'USD' | 'EUR' | 'RUB')
+          onChange: (val: string | boolean) => typeof val === 'string' && setCurrency(val as 'USD' | 'EUR' | 'RUB')
         },
         { 
           label: 'Язык', 
           value: language,
           type: 'select',
           options: ['en', 'ru'] as const,
-          onChange: (val: string) => setLanguage(val as 'en' | 'ru')
+          onChange: (val: string | boolean) => typeof val === 'string' && setLanguage(val as 'en' | 'ru')
         },
         { label: 'Тема оформления', path: '/settings/theme' },
       ]
@@ -79,13 +80,13 @@ export const Settings = () => {
           label: 'Биометрия',
           type: 'toggle',
           value: biometricEnabled,
-          onChange: toggleBiometric
+          onChange: (val: string | boolean) => typeof val === 'boolean' && toggleBiometric()
         },
         {
           label: 'Уведомления',
           type: 'toggle',
           value: notificationsEnabled,
-          onChange: toggleNotifications
+          onChange: (val: string | boolean) => typeof val === 'boolean' && toggleNotifications()
         },
       ]
     },
@@ -135,7 +136,7 @@ export const Settings = () => {
                         <span className="text-c-text-primary">{item.label}</span>
                         <Toggle
                           enabled={item.value as boolean}
-                          onChange={item.onChange as (enabled: boolean) => void}
+                          onChange={(enabled) => item.onChange?.(enabled)}
                         />
                       </div>
                     ) : item.type === 'select' && item.options ? (

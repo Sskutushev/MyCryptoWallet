@@ -18,7 +18,7 @@ class TelegramService {
   // Возвращает информацию о версии Telegram WebApp
   getWebAppVersion(): string | null {
     if (window.Telegram?.WebApp) {
-      return window.Telegram.WebApp.version
+      return (window.Telegram.WebApp as any).version || null
     }
     return null
   }
@@ -42,9 +42,9 @@ class TelegramService {
 
   // Работа с буфером обмена (Telegram безопасный способ)
   async copyToClipboard(text: string): Promise<boolean> {
-    if (this.isRunningInTelegram() && window.Telegram?.WebApp?.clipboard) {
+    if (this.isRunningInTelegram() && (window.Telegram?.WebApp as any)?.clipboard) {
       try {
-        await window.Telegram.WebApp.clipboard.writeText(text)
+        await (window.Telegram.WebApp as any).clipboard.writeText(text)
         return true
       } catch (error) {
         console.error('Failed to copy to clipboard:', error)
@@ -64,8 +64,8 @@ class TelegramService {
 
   // Отправка данных в Telegram
   sendData(data: string) {
-    if (window.Telegram?.WebApp) {
-      window.Telegram.WebApp.sendData(data)
+    if (window.Telegram?.WebApp && typeof (window.Telegram.WebApp as any).sendData === 'function') {
+      (window.Telegram.WebApp as any).sendData(data)
     }
   }
 

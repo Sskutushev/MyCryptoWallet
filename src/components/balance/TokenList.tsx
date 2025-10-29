@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Card } from '../common/Card'
 import { ChevronDown, Settings as SettingsIcon } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
@@ -12,8 +11,6 @@ interface TokenListProps {
 export const TokenList = ({ loading }: TokenListProps) => {
   const navigate = useNavigate()
   const { tokens } = useWallet()
-
-  // TODO: Implement sorting logic
 
   return (
     <div className="space-y-3">

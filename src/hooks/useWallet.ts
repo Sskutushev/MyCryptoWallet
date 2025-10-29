@@ -57,7 +57,7 @@ export const useWallet = create<WalletState>((set, get) => ({
 
   createWallet: async (password: string) => {
     secureStorage.initialize(password)
-    const wallet = ethers.Wallet.createRandom() as ethers.HDNodeWallet
+    const wallet = ethers.Wallet.createRandom()
     const encryptedJson = await wallet.encrypt(password)
     
     secureStorage.setItem('encryptedWallet', encryptedJson)
@@ -70,13 +70,13 @@ export const useWallet = create<WalletState>((set, get) => ({
       hasWallet: true,
     })
     
-    return { address: wallet.address, mnemonic: wallet.mnemonic?.phrase || '' }
+    return { address: wallet.address, mnemonic: (wallet as any).mnemonic?.phrase || '' }
   },
 
   importWallet: async (mnemonic: string, password: string) => {
     try {
       secureStorage.initialize(password)
-      const wallet = ethers.Wallet.fromPhrase(mnemonic) as ethers.HDNodeWallet
+      const wallet = ethers.Wallet.fromPhrase(mnemonic)
       const encryptedJson = await wallet.encrypt(password)
       
       secureStorage.setItem('encryptedWallet', encryptedJson)
